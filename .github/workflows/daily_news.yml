@@ -2,8 +2,8 @@ name: Daily Global News Generator
 
 on:
   schedule:
-    - cron: '30 17 * * *' # 11:00 PM IST (17:30 UTC)
-  workflow_dispatch:      # Manual trigger for testing
+    - cron: '30 17 * * *' # Runs at 11:00 PM IST (17:30 UTC)
+  workflow_dispatch:      # Allows you to run it manually for testing
 
 jobs:
   generate-news:
@@ -33,15 +33,17 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
+          # GN + YearMonthDay + A1 format for commits
           git commit -m "GN$(date +'%Y%m%d')A1" || echo "No changes to commit"
           git push
 
-      # --- STEP TO FIX THE DATE IN SUBJECT ---
+      # --- SET THE FORMATTED DATE (e.g., 3 March 2026) ---
       - name: Get Current Date
         id: date
-        run: echo "NOW=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+        # %-d removes leading zero, %B is full month name
+        run: echo "NOW=$(date +'%-d %B %Y')" >> $GITHUB_ENV
 
-      # --- SEND THE FORMATTED HTML EMAIL ---
+      # --- SEND THE TELUGU HTML EMAIL ---
       - name: Send Breaking News Email
         uses: dawidd6/action-send-mail@v3
         with:
@@ -50,9 +52,9 @@ jobs:
           username: ${{ secrets.GMAIL_USER }}
           password: ${{ secrets.GMAIL_APP_PASSWORD }}
           
-          # This correctly uses the date we just calculated
-          subject: "HOT NEWS: Briefing for ${{ env.NOW }}"
+          # Telugu Subject Line with formatted date
+          subject: "ముఖ్యాంశాలు: ${{ env.NOW }} నేటి వార్తా నివేదిక"
           
           to: ${{ secrets.GMAIL_USER }}
-          from: "Gemini Intelligence Bot"
+          from: "Gemini Telugu News Bot"
           html_body: file://email_body.html
