@@ -477,6 +477,10 @@ Output strictly using the following Markdown format:
 ## SECTION 26 — Summary for the Busy Reader
 
 - **Geopolitics:** - **Global News:** - **MENA:** - **Future Tech:** - **Business:** - **Science:** - **Health:** - **Security:** - **Climate:** - **Markets:** - **Mega Projects:** - **Migration:** - **India National:** - **Telangana:** - **Andhra Pradesh:** - **MENA Strategy:** - **Sentiment:** - **Deep Analysis:** - **History (Global):** - **History (India):** - **Week Review:** - **Month Review:** - **Gold:** - **Indicators:** - **Insight:** -- END OF REPORT --
+
+CRITICAL: You MUST use Google Search to find real-time news for today, 
+    including the US-Iran conflict, gold rates from Goodreturns Hyderabad, 
+    and India-specific updates for Telangana and Andhra Pradesh.
 """
 
     # 5. Inject the live dates into the prompt safely
@@ -485,9 +489,12 @@ Output strictly using the following Markdown format:
     final_prompt = final_prompt.replace("[TIME_STR]", time_str)
 
     # 6. Call the Gemini API using the new v2 syntax
-    response = client.models.generate_content(
+   response = client.models.generate_content(
         model='gemini-2.5-flash',
         contents=final_prompt,
+        config={
+            'tools': [{'google_search': {}}] 
+        }
     )
     content = response.text
     
