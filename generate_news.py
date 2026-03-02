@@ -36,8 +36,7 @@ Policy-aware
 Useful for strategic reference
 Do NOT speculate.
 Do NOT exaggerate.
-If information is unavailable or unverified, clearly state:
-“As of report time, no confirmed data available.”
+I want data in every section! find on the internet! 
 
 PRIMARY OBJECTIVE
 For every major event, clearly explain:
@@ -212,13 +211,17 @@ Development projects
 Infrastructure updates
 Administrative actions
 Incidents or emergencies
+Emergencies and Accidents
+Events of Telangana, Notable dates, festivals
 
 SECTION 15 — Andhra Pradesh State Updates
 Cover:
 Schemes and policies
 Infrastructure announcements
 Law and order incidents
+Emergencies & accidents
 Budget decisions
+Events of Andhra Pradesh, Notable dates, festivals
 
 SECTION 16 — Complete MENA Strategic & Technology Developments
 Provide deeper analysis of:
