@@ -489,7 +489,7 @@ CRITICAL: You MUST use Google Search to find real-time news for today,
     final_prompt = final_prompt.replace("[TIME_STR]", time_str)
 
     # 6. Call the Gemini API using the new v2 syntax
-   response = client.models.generate_content(
+    response = client.models.generate_content(
         model='gemini-2.5-flash',
         contents=final_prompt,
         config={
