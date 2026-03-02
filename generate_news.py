@@ -486,7 +486,7 @@ Output strictly using the following Markdown format:
 
     # 6. Call the Gemini API using the new v2 syntax
     response = client.models.generate_content(
-        model='gemini-2.5-pro',
+        model='gemini-2.5-flash',
         contents=final_prompt,
     )
     content = response.text
