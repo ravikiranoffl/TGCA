@@ -2,15 +2,14 @@ name: Daily Global News Generator
 
 on:
   schedule:
-    # This runs the script every day at 23:00 IST (17:30 UTC)
     - cron: '30 17 * * *'
-  workflow_dispatch: # This adds a manual "Run workflow" button for testing
+  workflow_dispatch:
 
 jobs:
   generate-news:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # This gives the bot permission to save the new file to your repo
+      contents: write
 
     steps:
       - name: Checkout Repository
@@ -19,10 +18,10 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.12' # Updated to Python 3.12
 
-      - name: Install Google Generative AI Library
-        run: pip install google-generativeai
+      - name: Install Google GenAI Library
+        run: pip install google-genai # Updated to the new library
 
       - name: Run News Generator Script
         env:
