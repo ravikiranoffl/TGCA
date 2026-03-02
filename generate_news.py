@@ -544,13 +544,13 @@ CRITICAL: You MUST use Google Search to find real-time news for today,
         final_html = f"""
         <html>
           <body style="font-family: 'Gautami', Arial, sans-serif; line-height: 1.8; color: #333; max-width: 600px; margin: auto; padding: 15px; border: 1px solid #eee; border-radius: 10px;">
-            <h2 style="color: #d32f2f; border-bottom: 2px solid #d32f2f; padding-bottom: 10px;">🚨 ఈరోజు ముఖ్యాంశాలు (Daily Highlights)</h2>
+            <h2 style="color: #d32f2f; border-bottom: 2px solid #d32f2f; padding-bottom: 10px;">ఈరోజు ముఖ్యాంశాలు</h2>
             <p style="color: #666; font-weight: bold;">తేదీ: {display_date}</p>
             <ul style="padding-left: 20px;">
               {html_list}
             </ul>
             <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
-            <p style="font-size: 11px; color: #999; text-align: center;">Gemini AI ద్వారా పంపబడింది • పూర్తి నివేదిక GitHubలో ఉంది</p>
+            <p style="font-size: 11px; color: #999; text-align: center;">జెమిని ద్వారా పంపబడింది • పూర్తి నివేదిక GitHubలో ఉంది</p>
           </body>
         </html>
         """
