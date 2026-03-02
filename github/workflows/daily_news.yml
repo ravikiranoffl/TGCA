@@ -1,0 +1,38 @@
+name: Daily Global News Generator
+
+on:
+  schedule:
+    # This runs the script every day at 23:00 IST (17:30 UTC)
+    - cron: '30 17 * * *'
+  workflow_dispatch: # This adds a manual "Run workflow" button for testing
+
+jobs:
+  generate-news:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # This gives the bot permission to save the new file to your repo
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Google Generative AI Library
+        run: pip install google-generativeai
+
+      - name: Run News Generator Script
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python generate_news.py
+
+      - name: Commit and Push the New File
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add 2026/
+          git commit -m "GN$(date +'%Y%m%d')A1" || echo "No changes to commit"
+          git push
