@@ -106,7 +106,8 @@ Including personalities Birthdays, Death Anniversaries, wars, attacks and More)
 (One major global or national important news from today explained in depth)
 
 ## SECTION 13 — Complete Summary
-From all section at least 2 lines of explanation or bulletins for the each 12 sections for email brefieing and reading. 
+From all sections at least 2 lines of explanation or bulletins from all 1 to 12 sections for email brefieing and reading. 
+I need 12 bulletins with two lines for each section! 
 """
 
 def fetch_clean_content(prompt_name, prompt_text):
