@@ -47,19 +47,19 @@ visits and all other important news that daily international news paper have.)
 (Major MENA regional news, Format strictly as Markdown. Do not include introductory text. 
 Most important text in concise without missing actual essence.
 The news consists of daily updates, political, geographical, tech updates, laws, incidents, events, 
-visits and all other important news that daily regional news paper have. - 3-6 lines)
+visits and all other important news that daily regional news paper have. - 4-7 lines)
 
 ## SECTION 3 — Technology -  3- 6 lines 
 (AI tools released today, major tech shifts, major changes in technology)
 
-## SECTION 4 — Global Business & Industry -  3 - 6 lines 
+## SECTION 4 — Global Business & Industry -  4-7 lines 
 (Business announcements, CEO statements, M&A, Business, Financial Updates)
 
 ## SECTION 5 — Global Security & Terrorism Monitor
-(Terror, cyber warfare, espionage, attacks, wars, cyber crimes) 3 - 6 lines 
+(Terror, cyber warfare, espionage, attacks, wars, cyber crimes) 4-7 lines 
 
 ## SECTION 6 — Global Economy
-(Stock markets, inflation, central banks, commodities) - 3 - 6 lines 
+(Stock markets, inflation, central banks, commodities) - 4-7 lines 
 """
 
 india_prompt = f"""
