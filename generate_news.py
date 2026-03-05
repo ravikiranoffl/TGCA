@@ -537,7 +537,7 @@ CRITICAL: You MUST use Google Search to find real-time news for today,
         final_html = f"""
         <html>
           <body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
-            <h2 style="color: #d32f2f; border-bottom: 2px solid #d32f2f; padding-bottom: 10px;">🚨 HOT TOPICS & BREAKING NEWS</h2>
+            <h2 style="color: #d32f2f; border-bottom: 2px solid #d32f2f; padding-bottom: 10px;">BREAKING NEWS</h2>
             <p style="color: #666; font-weight: bold;">{full_date_str}</p>
             <ul style="padding-left: 20px;">
               {html_list}
