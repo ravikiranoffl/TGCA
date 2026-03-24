@@ -552,7 +552,7 @@ CRITICAL: You MUST use Google Search to find real-time news for today,
     
     # 7. Define folder and exact file path
     folder_path = "2026"
-    file_name = f"GN-{report_id_date}.md"
+    file_name = f"{report_id_date}.md"
     full_path = os.path.join(folder_path, file_name)
     
     # 8. Create the '2026' folder if it doesn't exist yet
