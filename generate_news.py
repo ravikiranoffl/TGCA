@@ -2,7 +2,6 @@ import os
 import datetime
 import time
 from google import genai
-from google.genai import errors  # Added for the error handling
 
 # 1. Securely load the API Key from GitHub Secrets
 api_key = os.environ.get("GEMINI_API_KEY")
@@ -11,24 +10,6 @@ if not api_key:
 
 # 2. Initialize the new GenAI Client
 client = genai.Client(api_key=api_key)
-
-# ==========================================
-# DYNAMIC MODEL SELECTOR (Future-Proofing)
-# ==========================================
-ACTIVE_MODEL = 'gemini-3.1-flash-lite' # Assume stable first
-
-try:
-    # Ping the API to see if the stable model exists yet
-    client.models.get(model=ACTIVE_MODEL)
-    print(f"System Check: Stable model '{ACTIVE_MODEL}' is active and ready.\n")
-except errors.ClientError:
-    # If it 404s, stable isn't out yet. We silently fall back to preview.
-    ACTIVE_MODEL = 'gemini-3.1-flash-lite-preview'
-    print(f"System Check: Stable not found. Falling back to '{ACTIVE_MODEL}'.\n")
-
-# Give the API a quick 2-second breath before hitting the heavy Search tool
-time.sleep(2)
-# ==========================================
 
 def generate_and_save_news():
     # 3. Calculate precise IST Date and Time
@@ -56,7 +37,7 @@ def generate_and_save_news():
     """
     
     research_response = client.models.generate_content(
-        model=ACTIVE_MODEL,  # <--- Dynamic variable used here
+        model='gemini-2.5-flash',
         contents=research_prompt,
         config={'tools': [{'google_search': {}}]}
     )
@@ -561,7 +542,7 @@ CRITICAL: You MUST use Google Search to find real-time news for today,
 
     # 6. Call the Gemini API using the new v2 syntax
     response = client.models.generate_content(
-        model=ACTIVE_MODEL,  # <--- Dynamic variable used here
+        model='gemini-2.5-flash',
         contents=final_prompt,
         config={
             'tools': [{'google_search': {}}] 
@@ -605,7 +586,7 @@ CRITICAL: You MUST use Google Search to find real-time news for today,
               {html_list}
             </ul>
             <br>
-            <p> For Detailed News View, <a href="https://github.com/ravikiranoffl/tgca/tree/main/2026/{report_id_date}.md"> Click Here! </a> </p>
+            <p class="> For Detailed News View, <a href="https://github.com/ravikiranoffl/tgca/tree/main/2026/{report_id_date}.md"> Click Here! </a> </p>
             <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
             <p style="font-size: 11px; color: #999; text-align: center;">The Gemini Chronicle Agent • Archived in GitHub</p>
           </body>
