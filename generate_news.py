@@ -540,7 +540,7 @@ CRITICAL: You MUST use Google Search to find real-time news for today,
     final_prompt = final_prompt.replace("[TIME_STR]", time_str)
     final_prompt = final_prompt.replace("[LOCAL_NEWS_DATA]", local_news_data)
 
-    # 6. Call the Gemini API using the new v2 syntax
+    # 6. Call the Gemini API using the direct call
     response = client.models.generate_content(
         model='gemini-2.5-flash',
         contents=final_prompt,
@@ -555,7 +555,7 @@ CRITICAL: You MUST use Google Search to find real-time news for today,
     file_name = f"{report_id_date}.md"
     full_path = os.path.join(folder_path, file_name)
     
-    # 8. Create the '2026' folder if it doesn't exist yet
+    # 8. Create the folder if it doesn't exist yet
     os.makedirs(folder_path, exist_ok=True)
     
     # 9. Save the Markdown file
@@ -564,39 +564,57 @@ CRITICAL: You MUST use Google Search to find real-time news for today,
     
     print(f"Successfully created and saved: {full_path}")
 
-    # 10. Create a Beautiful HTML Summary for Gmail
+    # ==========================================
+    # STEP 2.5: THE DELAY (Prevent API Crashes)
+    # ==========================================
+    print("Pausing for 10 seconds before generating email design...")
+    time.sleep(10)
+    print("Resuming...\n")
+
+    # ==========================================
+    # STEP 3: THE DESIGNER (Email Formatting)
+    # ==========================================
+    print("Step 3: Designing the email summary with Gemini...")
     email_summary_path = "email_body.html"
     
-    # Find where the summary starts (Section 26)
-    summary_start = content.find("## SECTION 26")
-    
-    if summary_start != -1:
-        # Extract the text and strip extra whitespace
-        raw_summary = content[summary_start + 13:].strip()
+    if "## SECTION 26" in content:
+        # Split text directly at the header and grab everything after
+        raw_summary = content.split("## SECTION 26")[1] 
+        # Clean up the AI's header text
+        raw_summary = raw_summary.split("\n", 1)[1].strip() 
         
-        # Convert Markdown bullets (- **) into clean HTML list items (<li><b>)
-        html_list = raw_summary.replace("- **", "<li><b>").replace("**:", "</b>:").replace("\n- ", "</li><li>")
+        design_prompt = f"""
+        You are an expert UI/UX designer and HTML email developer.
+        Take the following daily news summary and convert it into a beautiful, modern, and highly readable HTML email.
         
-        final_html = f"""
-        <html>
-          <body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
-            <h2 style="color: #d32f2f; border-bottom: 2px solid #d32f2f; padding-bottom: 10px;">BREAKING NEWS</h2>
-            <p style="color: #666; font-weight: bold;">{full_date_str}</p>
-            <ul style="padding-left: 20px;">
-              {html_list}
-            </ul>
-            <br>
-            <p class=""> For Detailed News View, <a href="https://github.com/ravikiranoffl/tgca/tree/main/2026/{report_id_date}.md"> Click Here! </a> </p>
-            <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
-            <p style="font-size: 11px; color: #999; text-align: center;">The Gemini Chronicle Agent • Archived in GitHub</p>
-          </body>
-        </html>
+        STRICT RULES:
+        1. Use inline CSS only (standard for email clients like Gmail).
+        2. Make it look professional, clean, and premium (use a crisp sans-serif font, good padding, and a clean white/gray background with a bold accent color for the header).
+        3. Create a polished header block that says "BREAKING NEWS BRIEFING" and includes today's date: {full_date_str}.
+        4. Structure the news items clearly. Use bolding for categories (like Geopolitics, Tech, etc.).
+        5. At the very bottom, add a clean button or formatted link that says "View Detailed Global Report" pointing to: https://github.com/ravikiranoffl/tgca/tree/main/{folder_path}/{report_id_date}.md
+        6. OUTPUT ONLY RAW HTML. Do not wrap it in ```html markdown blocks. Start directly with <!DOCTYPE html>.
+        
+        RAW SUMMARY TO FORMAT:
+        {raw_summary}
         """
+        
+        design_response = client.models.generate_content(
+            model='gemini-2.5-flash',
+            contents=design_prompt
+        )
+        
+        final_html = design_response.text.replace("```html", "").replace("```", "").strip()
+        print("Email designed successfully!\n")
+        
     else:
-        final_html = f"<html><body><h2>News Briefing Available</h2><p>The report for {full_date_str} is ready in your repository.</p></body></html>"
+        print("Warning: Section 26 not found. Generating fallback email.")
+        final_html = f"<html><body><h2>News Briefing Available! </h2><p>The report for {full_date_str} is ready in your repository.</p></body></html>"
 
     with open(email_summary_path, "w", encoding="utf-8") as f:
         f.write(final_html)
+        
+    print("Pipeline Complete! Agent returning to sleep.")
 
 if __name__ == "__main__":
     generate_and_save_news()
