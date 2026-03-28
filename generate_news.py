@@ -551,7 +551,7 @@ CRITICAL: You MUST use Google Search to find real-time news for today,
     content = response.text
     
     # 7. Define folder and exact file path
-    folder_path = "2026"
+    folder_path = now.strftime("%Y")
     file_name = f"{report_id_date}.md"
     full_path = os.path.join(folder_path, file_name)
     
@@ -586,7 +586,7 @@ CRITICAL: You MUST use Google Search to find real-time news for today,
               {html_list}
             </ul>
             <br>
-            <p class="> For Detailed News View, <a href="https://github.com/ravikiranoffl/tgca/tree/main/2026/{report_id_date}.md"> Click Here! </a> </p>
+            <p class=""> For Detailed News View, <a href="https://github.com/ravikiranoffl/tgca/tree/main/2026/{report_id_date}.md"> Click Here! </a> </p>
             <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
             <p style="font-size: 11px; color: #999; text-align: center;">The Gemini Chronicle Agent • Archived in GitHub</p>
           </body>
