@@ -37,7 +37,7 @@ def generate_and_save_news():
     """
     
     research_response = client.models.generate_content(
-        model='gemini-3.1-flash-lite',
+        model='gemini-3.1-flash-lite-preview',
         contents=research_prompt,
         config={'tools': [{'google_search': {}}]}
     )
@@ -542,7 +542,7 @@ CRITICAL: You MUST use Google Search to find real-time news for today,
 
     # 6. Call the Gemini API using the new v2 syntax
     response = client.models.generate_content(
-        model='gemini-3.1-flash-lite',
+        model='gemini-3.1-flash-lite-preview',
         contents=final_prompt,
         config={
             'tools': [{'google_search': {}}] 
