@@ -590,7 +590,7 @@ CRITICAL: You MUST use Google Search to find real-time news for today,
         STRICT RULES:
         1. Use inline CSS only (standard for email clients like Gmail).
         2. Make it look professional, clean, and premium (use a crisp sans-serif font, good padding, and a clean white/gray background with a bold accent color for the header).
-        3. Create a polished header block that says "BREAKING NEWS BRIEFING" and includes today's date: {full_date_str}.
+        3. Create a polished header block (h2) that says "THE GEMINI CHRONICLE AGENT" and includes today's date: {full_date_str}.
         4. Structure the news items clearly. Use bolding for categories (like Geopolitics, Tech, etc.).
         5. At the very bottom, add a clean button or formatted link that says "View Detailed Global Report" pointing to: https://github.com/ravikiranoffl/tgca/tree/main/{folder_path}/{report_id_date}.md
         6. OUTPUT ONLY RAW HTML. Do not wrap it in ```html markdown blocks. Start directly with <!DOCTYPE html>.
