@@ -1,4 +1,4 @@
-# 🌍 The Gemini Chronicle Agent (TGCA)
+##  The Gemini Chronicle Agent (TGCA)
 
 **A fully autonomous, serverless intelligence pipeline that researches, writes, and permanently archives a daily global news briefing using Google's Gemini API and GitHub Actions.**
 
