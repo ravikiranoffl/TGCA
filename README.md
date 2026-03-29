@@ -4,7 +4,7 @@
 
 ---
 
-## 📖 The Origin Story: Why I Built This
+## The Origin Story: Why I Built This
 
 Every useful system starts with a breaking point. For me, it was the exhaustion of the morning news cycle. 
 
@@ -26,7 +26,7 @@ I successfully engineered a pipeline that takes my master prompt, securely pings
 
 ---
 
-## 🧠 System Architecture
+##  System Architecture
 
 TGCA bypasses traditional, expensive cloud hosting by utilizing GitHub as a complete execution, cognition, and database environment. 
 
@@ -37,7 +37,7 @@ TGCA bypasses traditional, expensive cloud hosting by utilizing GitHub as a comp
 
 ---
 
-## 🔭 The Long-Term Vision: Compounding Value
+##  The Long-Term Vision: Compounding Value
 
 TGCA is not just a daily news fetcher; it is an infinitely scalable, chronological data lake. By strictly using Markdown (a universal, future-proof plaintext format) and an ISO 8601 naming convention (`YYYY-MM-DD`), the value of this repository compounds over time:
 
@@ -47,7 +47,7 @@ TGCA is not just a daily news fetcher; it is an infinitely scalable, chronologic
 
 ---
 
-## 🛠️ Setup & Deployment
+##  Setup & Deployment
 
 If you are forking this repository to run your own autonomous agent, follow these steps:
 
@@ -69,7 +69,7 @@ The agent is triggered via `.github/workflows/main.yml`. Adjust the cron timing 
 
 ---
 
-## 🎯 Conclusion: Taking Back the Morning
+##  Conclusion: Taking Back the Morning
 
 The Gemini Chronicle Agent started as a desperate attempt to organize my morning reading and cure my digital fatigue. It evolved into a fully autonomous system that operates entirely in the background, demanding nothing but delivering consistent, high-fidelity intelligence every single day. 
 
