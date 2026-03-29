@@ -3,16 +3,43 @@ import datetime
 import time
 from google import genai
 
-# 1. Securely load the API Key from GitHub Secrets
-api_key = os.environ.get("GEMINI_API_KEY")
-if not api_key:
+api_key_1 = os.environ.get("GEMINI_API_KEY")
+api_key_2 = os.environ.get("GEMINI_API_KEY_2")
+
+if not api_key_1:
     raise ValueError("GEMINI_API_KEY environment variable not set. Please check your GitHub Secrets.")
 
-# 2. Initialize the new GenAI Client
-client = genai.Client(api_key=api_key)
+client = genai.Client(api_key=api_key_1)
+using_spare_key = False
+
+def fetch_with_fallback(prompt, use_search=True):
+    global client, using_spare_key
+    config_dict = {'tools': [{'google_search': {}}]} if use_search else None
+    
+    try:
+        response = client.models.generate_content(
+            model='gemini-2.5-flash',
+            contents=prompt,
+            config=config_dict
+        )
+        return response.text
+    except Exception as e:
+        if not using_spare_key and api_key_2:
+            print(f"Primary API Key error: {e}")
+            print("Switching to Spare API Key (GEMINI_API_KEY_2)...")
+            client = genai.Client(api_key=api_key_2)
+            using_spare_key = True
+            
+            response = client.models.generate_content(
+                model='gemini-2.5-flash',
+                contents=prompt,
+                config=config_dict
+            )
+            return response.text
+        else:
+            raise e
 
 def generate_and_save_news():
-    # 3. Calculate precise IST Date and Time
     ist_timezone = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
     now = datetime.datetime.now(ist_timezone)
     
@@ -22,9 +49,6 @@ def generate_and_save_news():
     
     print(f"Generating briefing for {full_date_str} at {time_str}...")
 
-    # ==========================================
-    # STEP 1: THE RESEARCHER (Local News Gatherer)
-    # ==========================================
     print("Step 1: Fetching hyper-local state news and gold rates...")
     
     research_prompt = f"""
@@ -36,28 +60,15 @@ def generate_and_save_news():
     3. Today's 24 Carat and 22 Carat Gold price per 10g in Hyderabad from the match Goodreturns website www.goodreturns.in/gold-rates/hyderabad.html  including the price change from yesterday.
     """
     
-    research_response = client.models.generate_content(
-        model='gemini-2.5-flash',
-        contents=research_prompt,
-        config={'tools': [{'google_search': {}}]}
-    )
-    
-    local_news_data = research_response.text
+    local_news_data = fetch_with_fallback(research_prompt, use_search=True)
     print("Local news fetched successfully!\n")
 
-    # ==========================================
-    # STEP 1.5: THE DELAY (Prevent API Crashes)
-    # ==========================================
     print("Pausing for 10 seconds to respect API burst limits...")
     time.sleep(10)
     print("Resuming...\n")
 
-    # ==========================================
-    # STEP 2: THE WRITER (Global News & Compiling)
-    # ==========================================
     print("Step 2: Generating global news and compiling the master report...")
 
-    # 4. Your Complete Master Prompt (EXACTLY as you wrote it, plus the data injection)
     raw_prompt = """
 🛑 CRITICAL INSTRUCTION FOR LOCAL NEWS & GOLD 🛑
 I have already researched the local India news and gold rates for you. You MUST use the exact data provided below to write Section 14, Section 15, and Section 23. Do not search for this local news yourself.
@@ -534,53 +545,33 @@ CRITICAL: You MUST use Google Search to find real-time news for today,
     for every section 4-6 lines are enough! make concise it!
 """
 
-    # 5. Inject the live dates and the local news data into the prompt safely
     final_prompt = raw_prompt.replace("[REPORT_ID_DATE]", report_id_date)
     final_prompt = final_prompt.replace("[FULL_DATE_STR]", full_date_str)
     final_prompt = final_prompt.replace("[TIME_STR]", time_str)
     final_prompt = final_prompt.replace("[LOCAL_NEWS_DATA]", local_news_data)
 
-    # 6. Call the Gemini API using the direct call
-    response = client.models.generate_content(
-        model='gemini-2.5-flash',
-        contents=final_prompt,
-        config={
-            'tools': [{'google_search': {}}] 
-        }
-    )
-    content = response.text
+    content = fetch_with_fallback(final_prompt, use_search=True)
     
-    # 7. Define folder and exact file path
     folder_path = now.strftime("%Y")
     file_name = f"{report_id_date}.md"
     full_path = os.path.join(folder_path, file_name)
     
-    # 8. Create the folder if it doesn't exist yet
     os.makedirs(folder_path, exist_ok=True)
     
-    # 9. Save the Markdown file
     with open(full_path, "w", encoding="utf-8") as file:
         file.write(content)
     
     print(f"Successfully created and saved: {full_path}")
 
-    # ==========================================
-    # STEP 2.5: THE DELAY (Prevent API Crashes)
-    # ==========================================
     print("Pausing for 10 seconds before generating email design...")
     time.sleep(10)
     print("Resuming...\n")
 
-    # ==========================================
-    # STEP 3: THE DESIGNER (Email Formatting)
-    # ==========================================
     print("Step 3: Designing the email summary with Gemini...")
     email_summary_path = "email_body.html"
     
     if "## SECTION 26" in content:
-        # Split text directly at the header and grab everything after
         raw_summary = content.split("## SECTION 26")[1] 
-        # Clean up the AI's header text
         raw_summary = raw_summary.split("\n", 1)[1].strip() 
         
         design_prompt = f"""
@@ -599,12 +590,8 @@ CRITICAL: You MUST use Google Search to find real-time news for today,
         {raw_summary}
         """
         
-        design_response = client.models.generate_content(
-            model='gemini-2.5-flash',
-            contents=design_prompt
-        )
-        
-        final_html = design_response.text.replace("```html", "").replace("```", "").strip()
+        design_response_text = fetch_with_fallback(design_prompt, use_search=False)
+        final_html = design_response_text.replace("```html", "").replace("```", "").strip()
         print("Email designed successfully!\n")
         
     else:
