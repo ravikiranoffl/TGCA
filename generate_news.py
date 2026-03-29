@@ -539,10 +539,13 @@ strictly from the website: https://www.goodreturns.in/gold-rates/hyderabad.html
 
 - **Geopolitics:** - **Global News:** - **MENA:** - **Future Tech:** - **Business:** - **Science:** - **Health:** - **Security:** - **Climate:** - **Markets:** - **Mega Projects:** - **Migration:** - **India National:** - **Telangana:** - **Andhra Pradesh:** - **MENA Strategy:** - **Sentiment:** - **Deep Analysis:** - **History (Global):** - **History (India):** - **Week Review:** - **Month Review:** - **Gold:** - **Indicators:** - **Insight:** -- END OF REPORT --
 
-CRITICAL: You MUST use Google Search to find real-time news for today, 
+CRITICAL: 
+    Do not Hellucinate!
+    You MUST use Google Search to find real-time news for today, 
     including the US-Iran conflict, global news, and tech updates.
     At any cost i dont want i couldnt find or empty result! any result or update should be there! 
     for every section 4-6 lines are enough! make concise it!
+    
 """
 
     final_prompt = raw_prompt.replace("[REPORT_ID_DATE]", report_id_date)
