@@ -123,7 +123,7 @@ Ensure your workflow includes:
 
 ```
 pip install google-genai
-````
+```
 
 ---
 
@@ -136,6 +136,67 @@ Edit:
 ```
 
 Set your preferred schedule. GitHub Actions uses UTC time.
+
+---
+
+## Real-Time Intelligence: Use as a Package or API
+
+You can now interact with the TGCA archives in real-time by querying the intelligence engine. There are two ways to integrate this into your own applications:
+
+### Method 1: Python Module (Direct Pip Install)
+You can install and update the TGCA API library directly from GitHub in a single terminal command:
+
+```bash
+pip install --upgrade git+https://github.com/ravikiranoffl/tgca-api.git
+```
+
+**Template Python Script:**
+
+```python
+from tgca_api.engine import search_news
+
+# Note: Ensure your local environment has the GEMINI_API_KEY set
+# via a .env file or system environment variables.
+
+intel = search_news("What is the latest update on the US-Iran ceasefire?")
+
+print("--- AGENT RESPONSE ---")
+print(intel['answer'])
+print("\n--- SOURCES ---")
+print(intel['sources'])
+```
+
+### Method 2: Render API Call (Fetch Method via Python)
+If you have deployed the API to a cloud service like Render.com, you can fetch answers over HTTP using standard web requests without installing the library locally.
+
+**Python API Call Template:**
+
+```python
+import requests
+import urllib.parse
+
+# 1. Define the query and your live Render URL
+query = "What is the latest global news?"
+# Replace with your actual Render deployment URL
+api_url = f"https://your-render-app-name.onrender.com/ask?query={urllib.parse.quote(query)}"
+
+try:
+    # 2. Fetch the data from the live server
+    response = requests.get(api_url)
+    
+    # Check if the response is successful
+    if response.status_code == 200:
+        data = response.json()
+        print("Agent Answer:", data.get('answer'))
+        print("Sources:", data.get('sources'))
+    else:
+        print(f"Error: Received status code {response.status_code}")
+
+except Exception as e:
+    print("Failed to fetch intelligence:", e)
+```
+
+**⚠️ Important Note:** Because this intelligence engine relies on the free tier limits of the Gemini API, please **wait 60 seconds after every response** before sending another query. Sending requests too quickly will result in a "quota exceeded" (429) error.
 
 ---
 
@@ -152,4 +213,3 @@ Fork the repository, add your API keys, and let the system run.
 ---
 
 Built with Python, GitHub Actions, and Google Gemini.
-
