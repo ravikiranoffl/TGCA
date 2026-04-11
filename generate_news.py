@@ -16,28 +16,43 @@ def fetch_with_fallback(prompt, use_search=True):
     global client, using_spare_key
     config_dict = {'tools': [{'google_search': {}}]} if use_search else None
     
-    try:
-        response = client.models.generate_content(
-            model='gemini-2.5-flash',
-            contents=prompt,
-            config=config_dict
-        )
-        return response.text
-    except Exception as e:
-        if not using_spare_key and api_key_2:
-            print(f"Primary API Key error: {e}")
-            print("Switching to Spare API Key (GEMINI_API_KEY_2)...")
-            client = genai.Client(api_key=api_key_2)
-            using_spare_key = True
-            
-            response = client.models.generate_content(
-                model='gemini-2.5-flash',
-                contents=prompt,
-                config=config_dict
-            )
-            return response.text
+    keys = [api_key_1, api_key_2]
+    max_retries = 3
+    
+    for attempt in range(max_retries):
+        for index, key in enumerate(keys):
+            if not key:
+                continue # Skip if the spare key isn't configured
+                
+            try:
+                # Re-initialize the client with the current key in the loop
+                client = genai.Client(api_key=key)
+                if index == 1 and not using_spare_key:
+                    print("Switching to Spare API Key (GEMINI_API_KEY_2)...")
+                    using_spare_key = True
+                    
+                response = client.models.generate_content(
+                    model='gemini-2.5-flash',
+                    contents=prompt,
+                    config=config_dict
+                )
+                return response.text
+                
+            except Exception as e:
+                error_msg = str(e)
+                print(f"⚠️ Key {index + 1} Error on Attempt {attempt + 1}: {error_msg}")
+                
+                # If it's NOT a server traffic/quota issue, let it try the next key immediately
+                if "503" not in error_msg and "429" not in error_msg and "UNAVAILABLE" not in error_msg and "Quota" not in error_msg:
+                    continue 
+
+        # If we reach here, BOTH keys failed on this attempt.
+        if attempt < max_retries - 1:
+            wait_time = 30 * (attempt + 1) # Waits 30s, then 60s
+            print(f"⏳ Google API is overloaded. Pausing script for {wait_time} seconds before retrying...")
+            time.sleep(wait_time)
         else:
-            raise e
+            raise Exception("❌ Max retries reached. Google's API is completely unavailable right now.")
 
 def generate_and_save_news():
     ist_timezone = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
