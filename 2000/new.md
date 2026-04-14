@@ -46,6 +46,3 @@
 > (Two dense paragraphs detailing 2 major Indian historical events that happened on this month/day in prior years)
 > 
 > **AWAIT TARGET DATES:** I will now provide the dates. Generate the batch.
-
-
-```
