@@ -1,6 +1,7 @@
 import os
 import datetime
 import time
+import random
 from google import genai
 
 api_key_1 = os.environ.get("GEMINI_API_KEY")
@@ -585,24 +586,42 @@ CRITICAL:
     time.sleep(10)
     print("Resuming...\n")
 
-    print("Step 3: Designing the email summary with Gemini...")
+    print("Step 3: Designing the dynamic email summary with Gemini...")
     email_summary_path = "email_body.html"
     
     if "## SECTION 26" in content:
         raw_summary = content.split("## SECTION 26")[1] 
         raw_summary = raw_summary.split("\n", 1)[1].strip() 
         
+        # A curated list of ultra-premium animated gradients
+        premium_gradients = [
+            "linear-gradient(-45deg, #0f172a, #1e293b, #075985, #0f172a)", # Slate & Ocean (Corporate)
+            "linear-gradient(-45deg, #022c22, #064e3b, #0f766e, #022c22)", # Emerald Intelligence (Tech)
+            "linear-gradient(-45deg, #2e1065, #4c1d95, #312e81, #2e1065)", # Royal Deep Space (Premium)
+            "linear-gradient(-45deg, #450a0a, #7f1d1d, #431407, #450a0a)", # Crimson Executive (Urgent)
+            "linear-gradient(-45deg, #09090b, #27272a, #3f3f46, #09090b)"  # Midnight Obsidian (Sleek)
+        ]
+        
+        # Python selects a fresh theme for today
+        daily_gradient = random.choice(premium_gradients)
+        
         design_prompt = f"""
         You are an expert UI/UX designer and HTML email developer.
-        Take the following daily news summary and convert it into a beautiful, modern, and highly readable HTML email.
+        Convert this daily news summary into a beautiful, modern HTML email.
         
-        STRICT RULES:
-        1. Use inline CSS only (standard for email clients like Gmail).
-        2. Make it look professional, clean, and premium (use a crisp sans-serif font, good padding, and a clean white/gray background with a bold accent color for the header).
-        3. Create a polished header block (h2) that says "THE GEMINI CHRONICLE AGENT" and includes today's date: {full_date_str}.
-        4. Structure the news items clearly. Use bolding for categories (like Geopolitics, Tech, etc.).
-        5. At the very bottom, add a clean button or formatted link that says "View Detailed Global Report" pointing to: https://github.com/ravikiranoffl/tgca/tree/main/{folder_path}/{report_id_date}.md
-        6. OUTPUT ONLY RAW HTML. Do not wrap it in ```html markdown blocks. Start directly with <!DOCTYPE html>.
+        STRICT DESIGN RULES:
+        1. Use inline CSS alongside a <style> block for premium animations. Font family must be 'Inter', sans-serif.
+        2. Create a Title Card header block featuring the text "THE GEMINI CHRONICLE AGENT" and today's date ({full_date_str}).
+        3. You MUST apply this EXACT dynamic CSS to the Title Card header:
+           background: {daily_gradient}; background-size: 200% 200%; animation: titleShimmer 8s ease-in-out infinite; color: white; text-align: center; padding: 45px 20px; border-bottom: 4px solid #cbd5e1;
+        4. Inject these keyframes into your <style> tag:
+           @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap');
+           @keyframes fadeUp {{ from {{ opacity: 0; transform: translateY(20px); }} to {{ opacity: 1; transform: translateY(0); }} }}
+           @keyframes titleShimmer {{ 0% {{ background-position: 0% 50%; }} 50% {{ background-position: 100% 50%; }} 100% {{ background-position: 0% 50%; }} }}
+        5. Wrap the entire email body in a container with animation: fadeUp 0.8s forwards.
+        6. Format the summary points as a stunning, highly readable list (e.g., using subtle callout boxes, good padding, and bold categories).
+        7. At the bottom, add a beautiful, animated button for "View Detailed Global Report" linking to: https://github.com/YOUR_GITHUB_USERNAME/TGCA/blob/main/{folder_path}/{report_id_date}.md
+        8. OUTPUT ONLY RAW HTML. Do not wrap in ```html. Start exactly with <!DOCTYPE html>.
         
         RAW SUMMARY TO FORMAT:
         {raw_summary}
@@ -610,7 +629,7 @@ CRITICAL:
         
         design_response_text = fetch_with_fallback(design_prompt, use_search=False)
         final_html = design_response_text.replace("```html", "").replace("```", "").strip()
-        print("Email designed successfully!\n")
+        print("Email designed successfully with a dynamic premium theme!\n")
         
     else:
         print("Warning: Section 26 not found. Generating fallback email.")
