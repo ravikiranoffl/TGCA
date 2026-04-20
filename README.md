@@ -121,4 +121,3 @@ Instead of consuming information reactively, this pipeline curates, stores, and 
 
 ---
 *Built with Python, GitHub Actions, and Google Gemini.*
-```
