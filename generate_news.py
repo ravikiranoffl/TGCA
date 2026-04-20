@@ -620,7 +620,7 @@ CRITICAL:
            @keyframes titleShimmer {{ 0% {{ background-position: 0% 50%; }} 50% {{ background-position: 100% 50%; }} 100% {{ background-position: 0% 50%; }} }}
         5. Wrap the entire email body in a container with animation: fadeUp 0.8s forwards.
         6. Format the summary points as a stunning, highly readable list (e.g., using subtle callout boxes, good padding, and bold categories).
-        7. At the bottom, add a beautiful, animated button for "View Detailed Global Report" linking to: https://github.com/YOUR_GITHUB_USERNAME/TGCA/blob/main/{folder_path}/{report_id_date}.md
+        7. At the bottom, add a beautiful, animated button for "View Detailed Global Report" linking to: https://github.com/ravikiranoffl/TGCA/blob/main/{folder_path}/{report_id_date}.md
         8. OUTPUT ONLY RAW HTML. Do not wrap in ```html. Start exactly with <!DOCTYPE html>.
         
         RAW SUMMARY TO FORMAT:
