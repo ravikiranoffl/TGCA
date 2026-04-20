@@ -1,4 +1,5 @@
-#  The Gemini Chronicle Agent (TGCA)
+
+# The Gemini Chronicle Agent (TGCA)
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-Automated-2088FF.svg)
@@ -7,11 +8,11 @@
 
 > A fully autonomous, serverless intelligence pipeline that researches, writes, and permanently archives a daily global news briefing using Google's Gemini API and GitHub Actions.
 
-Runs daily via GitHub Actions **→** Queries Gemini **→** Generates Markdown **→** Commits to Repo **→** Sends HTML Email.
+Runs daily via GitHub Actions **->** Queries Gemini **->** Generates Markdown **->** Commits to Repo **->** Sends HTML Email.
 
 ---
 
-##  The Origin Story
+## The Origin Story
 
 Every useful system starts with friction. This one started with my mornings.
 
@@ -26,18 +27,48 @@ Now, the system runs automatically, and the archive grows every day.
 
 ---
 
-## ⚙️ System Architecture
+## System Architecture
 
 TGCA uses GitHub as a complete execution and storage environment.
 ```mermaid
 graph TD
-    A[ GitHub Actions Cron Job] -->|Triggers Daily| B( Python Master Script)
-    B -->|Dual-Key Fallback Query| C{ Google Gemini API}
-    C -->|Returns Curated Intelligence| B
-    B -->|Generates YYYY-MM-DD.md| D[( Flat-File Repo Archive)]
-    B -->|Prompts UI Generation| E[ HTML Email Engine]
-    D --> F[Permanent Global Dataset]
-    E --> G[GNPS Subscribers]
+    %% Define Logical Subgraphs for visual grouping
+    subgraph Orchestration ["Execution Layer"]
+        A([GitHub Actions Cron Job])
+    end
+
+    subgraph Core ["Intelligence Engine"]
+        B[[Python Master Script]]
+        C{Google Gemini API}
+    end
+
+    subgraph Pipeline ["Storage & Distribution"]
+        D[(Flat-File Repo Archive)]
+        E[/HTML Email Engine/]
+    end
+
+    subgraph Impact ["Long-Term Value"]
+        F[Permanent Global Dataset]
+        G([GNPS Subscribers])
+    end
+
+    %% Process Flow with distinct arrow types
+    A ==>|Triggers Daily @ 5:00 AM| B
+    
+    B -- "1. Dual-Key Fallback Query" --> C
+    C -- "2. Returns Curated Intelligence" --> B
+    
+    B ==>|"3. Generates YYYY-MM-DD.md"| D
+    B ==>|"4. Prompts UI Generation"| E
+    
+    D -.->|"Compounds over time into"| F
+    E ===>|"Delivers Daily Briefing"| G
+
+    %% Styling (Allows GitHub to naturally adapt to Light/Dark mode)
+    style Orchestration fill:transparent,stroke:#3b82f6,stroke-width:2px,stroke-dasharray: 5 5
+    style Core fill:transparent,stroke:#10b981,stroke-width:2px,stroke-dasharray: 5 5
+    style Pipeline fill:transparent,stroke:#f59e0b,stroke-width:2px,stroke-dasharray: 5 5
+    style Impact fill:transparent,stroke:#8b5cf6,stroke-width:2px,stroke-dasharray: 5 5
 ```
 
 ### 1. The Pulse (GitHub Actions)
@@ -73,22 +104,22 @@ TGCA/
 
 ---
 
-##  Long-Term Vision
+## Long-Term Vision
 
 This system is designed to accumulate value over time.
 
 *   **In 1 Year:** Approximately 365 structured reports forming a complete reference of global events.
-*   **In 3–5 Years:** A clean, massive dataset that can be used for trend analysis, pattern tracking, and historical queries.
-*   **In 10–20 Years:** A compact archive representing a long-term record of global developments and AI-generated summaries.
+*   **In 3-5 Years:** A clean, massive dataset that can be used for trend analysis, pattern tracking, and historical queries.
+*   **In 10-20 Years:** A compact archive representing a long-term record of global developments and AI-generated summaries.
 
 All data is stored purely in Markdown, ensuring ultimate portability and long-term accessibility across any future technology.
 
 ---
 
-##  Setup and Deployment
+## Setup and Deployment
 
 ### 1. Add Repository Secrets
-Navigate to **Settings** → **Secrets and variables** → **Actions** and add your credentials:
+Navigate to **Settings** -> **Secrets and variables** -> **Actions** and add your credentials:
 *   `GEMINI_API_KEY`
 *   `GEMINI_API_KEY_2` (Optional Fallback)
 *   `EMAIL_USERNAME`
@@ -111,7 +142,7 @@ on:
 
 ---
 
-##  Conclusion
+## Conclusion
 
 This project began as a way to reduce noise and organize information. It evolved into an enterprise-grade system that removes manual effort, produces consistent output, and builds long-term value automatically.
 
