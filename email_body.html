@@ -1,184 +1,213 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE GEMINI CHRONICLE AGENT - Daily Report</title>
-    <style>
-        /* Global Reset & Font Import */
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap');
-        
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif;
-            background-color: #f4f4f5; /* Updated: Slightly warmer zinc background */
-            -webkit-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
-            width: 100% !important;
-            color: #334155; 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE GEMINI CHRONICLE AGENT - Daily Report</title>
+<style>
+    /* Global Reset & Font Import */
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap');
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', sans-serif;
+        background-color: #f4f4f5;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+        width: 100% !important;
+        color: #334155;
+    }
+
+    /* NEW Keyframes for animations */
+    @keyframes zoomInFade {
+        from {
+            opacity: 0;
+            transform: scale(0.95);
         }
 
-        /* NEW Keyframes for animations */
-        @keyframes zoomInFade {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    @keyframes gradientPan {
+        0% {
+            background-position: 0% 50%;
         }
 
-        @keyframes gradientPan {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        50% {
+            background-position: 100% 50%;
         }
 
-        @keyframes buttonPulse {
-            0% { transform: scale(1); box-shadow: 0 4px 15px rgba(15, 118, 110, 0.3); }
-            50% { transform: scale(1.02); box-shadow: 0 6px 20px rgba(15, 118, 110, 0.6); }
-            100% { transform: scale(1); box-shadow: 0 4px 15px rgba(15, 118, 110, 0.3); }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    @keyframes buttonPulse {
+        0% {
+            transform: scale(1);
+            box-shadow: 0 4px 15px rgba(15, 118, 110, 0.3);
         }
 
-        /* Responsive styles */
-        @media only screen and (max-width: 600px) {
-            .email-container {
-                border-radius: 0 !important;
-                box-shadow: none !important;
-            }
-            .content-padding {
-                padding: 15px !important;
-            }
-            .header-title-card {
-                font-size: 28px !important;
-                padding: 35px 15px !important;
-            }
-            .header-date {
-                font-size: 16px !important;
-            }
-            .animated-button {
-                padding: 12px 25px !important;
-                font-size: 16px !important;
-            }
+        50% {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(15, 118, 110, 0.6);
         }
-    </style>
-</head>
-<body style="margin: 0; padding: 0; font-family: 'Inter', sans-serif; background-color: #f4f4f5; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; width: 100% !important; color: #334155;">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin: 0; padding: 0; background-color: #f4f4f5; font-family: 'Inter', sans-serif;">
+
+        100% {
+            transform: scale(1);
+            box-shadow: 0 4px 15px rgba(15, 118, 110, 0.3);
+        }
+    }
+
+    /* Responsive styles */
+    @media only screen and (max-width: 600px) {
+        .email-container {
+            border-radius: 0 !important;
+            box-shadow: none !important;
+        }
+
+        .content-padding {
+            padding: 15px !important;
+        }
+
+        .header-title-card {
+            font-size: 28px !important;
+            padding: 35px 15px !important;
+        }
+
+        .header-date {
+            font-size: 16px !important;
+        }
+
+        .animated-button {
+            padding: 12px 25px !important;
+            font-size: 16px !important;
+        }
+    }
+</style>
+<table border="0" cellpadding="0" cellspacing="0" width="100%"
+    style="margin: 0; padding: 0; background-color: #f4f4f5; font-family: 'Inter', sans-serif;">
+    <tbody>
         <tr>
             <td align="center" style="padding: 20px 0;">
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="email-container" 
-                       style="max-width: 600px; background-color: #ffffff; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); border-radius: 12px; overflow: hidden; animation: zoomInFade 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;">
-                    <tr>
-                        <td align="center" class="header-title-card" 
-                            style="background: linear-gradient(135deg, #064e3b, #0f766e, #047857, #022c22); 
-                                   background-size: 200% 200%; 
-                                   animation: gradientPan 6s ease infinite; 
-                                   color: white; 
-                                   text-align: center; 
-                                   padding: 45px 20px; 
-                                   border-bottom: 4px solid #34d399; 
-                                   font-family: 'Inter', sans-serif; 
-                                   font-size: 32px; 
-                                   line-height: 1.2; 
-                                   font-weight: 700;">
-                            THE GEMINI CHRONICLE AGENT<br>
-                            <span class="header-date" 
-                                  style="font-size: 18px; font-weight: 400; margin-top: 8px; display: block; opacity: 0.9;">Wednesday, 22 April 2026</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="content-padding" 
-                            style="padding: 25px 25px 15px; color: #334155; line-height: 1.6; font-family: 'Inter', sans-serif; font-size: 15px;">
-                            
-                            <div style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
-                                <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Geopolitics:</strong> The European Union has formalized emergency freight subsidies for conglomerates utilizing the newly established Saudi-Red Sea land bridge, as the Strait of Hormuz remains impassable to commercial shipping.
-                            </div>
-                            <div style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
-                                <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Global News:</strong> Rolling blackouts have been officially scheduled across parts of Spain and Italy as the anomalous early-season heatwave overloads regional electrical grids beyond their maximum operating thresholds.
-                            </div>
-                            <div style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
-                                <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">MENA:</strong> Diplomatic channels remain largely silent. Satellite imagery confirms a significant buildup of defensive naval assets by regional powers stationed just outside the immediate blockade zone.
-                            </div>
-                            <div style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
-                                <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Future Tech:</strong> Expanding on the SpaceX xAI orbital node success, several major logistics firms are now petitioning for commercial access to the node's predictive routing capabilities to manage the terrestrial supply chain chaos.
-                            </div>
-                            <div style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
-                                <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Business:</strong> Brent crude briefly touched $112/barrel in early trading. Major Asian electronics manufacturers are issuing profit warnings due to doubled air-freight costs and severely delayed material shipments.
-                            </div>
-                            <div style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
-                                <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Security & Cyber:</strong> Cybersecurity researchers have detected a massive spike in sophisticated cyber-attack traces hidden within the IoT data streams of alternative port facilities, likely state-sponsored attempts to disrupt rerouted logistics.
-                            </div>
-                            <div style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
-                                <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Health:</strong> The WHO has declared a regional public health emergency for the Mediterranean basin, as heatstroke admissions overwhelm local medical facilities unequipped for peak summer temperatures in April.
-                            </div>
-                            <div style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
-                                <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Climate:</strong> Atmospheric observation satellites report an unprecedented spike in localized carbon emissions as global shipping fleets run at maximum capacity on longer, significantly less efficient navigational routes.
-                            </div>
-                            <div style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
-                                <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Markets:</strong> Global markets experienced a sharp sell-off in early trading, led by the manufacturing and consumer goods sectors, as the reality of sustained, elevated energy costs severely impacts quarterly forecasts.
-                            </div>
-                            <div style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
-                                <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Mega Projects:</strong> Construction crews in the UAE have begun 24/7 operations to expedite the Fujairah pipeline expansion, aiming to halve the projected completion timeline amidst extreme urgency.
-                            </div>
-                            <div style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
-                                <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">India National:</strong> The emergency diesel subsidy has temporarily stabilized domestic freight rates, though the RBI has convened an unscheduled meeting to address the immediate downstream inflationary pressures on essential goods.
-                            </div>
-                            <div style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
-                                <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Telangana:</strong> While the mandatory night-time shift for heavy industry has stabilized the power grid, state administrative offices face severe operational strain; upcoming government recruitment notifications, including the highly anticipated Police Constable board, have been tentatively delayed to mid-May.
-                            </div>
-                            <div style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
-                                <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Andhra Pradesh:</strong> Tech parks in Visakhapatnam remain fully operational, successfully relying on localized microgrids and stringent energy rationing to bypass the regional power volatility and maintain international service level agreements.
-                            </div>
-                            <div style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
-                                <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Sentiment:</strong> Public discourse has pivoted from initial panic towards long-term adaptation, with significant online engagement focusing on localized agriculture, off-grid power solutions, and domestic resilience.
-                            </div>
-                            <div style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
-                                <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Deep Analysis:</strong> The detection of targeted cyber anomalies within maritime IoT infrastructure indicates a critical evolution in the crisis: adversaries are actively attempting to cripple physical logistics by compromising the underlying digital backbone that coordinates rerouting efforts.
-                            </div>
-                            <div style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
-                                <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">History (Global):</strong> On this day in 1970, the first Earth Day was celebrated, marking the beginning of the modern environmental movement and prompting the creation of the United States Environmental Protection Agency.
-                            </div>
-                            <div style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
-                                <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">History (India):</strong> On this day in 1958, Admiral Ram Dass Katari assumed charge as the first Indian Commander-in-Chief of the Indian Navy, marking a significant milestone in India's maritime autonomy.
-                            </div>
-                            <div style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
-                                <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Week Review:</strong> The immediate shock of the Hormuz closure is giving way to the complex, grueling reality of rebuilding global logistics networks and energy supply chains almost entirely from scratch under immense time pressure.
-                            </div>
-                            <div style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
-                                <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Month Review:</strong> As April draws to a close, the compounding crises of extreme weather patterns and geopolitical fracturing have permanently altered the baseline for global economic and environmental stability.
-                            </div>
-                            <div style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
-                                <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Gold:</strong> 24 Carat gold in Hyderabad saw a slight technical correction, trading at ₹1,56,800 per 10g, though institutional and retail safe-haven buying remains highly aggressive on every dip.
-                            </div>
-                            <div style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
-                                <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Indicators:</strong> The US Dollar Index (DXY) sustained its 14-month high; global maritime shipping indices remain effectively frozen as insurers refuse to underwrite high-risk transit zones.
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center; padding: 20px 25px 40px;">
-                            <a href="https://github.com/ravikiranoffl/TGCA/blob/main/2026/2026-04-22.md" class="animated-button" 
-                               style="display: inline-block; 
-                                      background: linear-gradient(135deg, #0f766e, #064e3b); 
-                                      color: white; 
-                                      padding: 15px 30px; 
-                                      border-radius: 8px; 
-                                      text-decoration: none; 
-                                      font-weight: 600; 
-                                      font-size: 17px; 
-                                      box-shadow: 0 4px 15px rgba(15, 118, 110, 0.3); 
-                                      animation: buttonPulse 2.5s infinite; 
-                                      font-family: 'Inter', sans-serif;">
-                                View Detailed Global Report
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center" style="padding: 20px; font-size: 12px; color: #94a3b8; font-family: 'Inter', sans-serif; border-top: 1px solid #f1f5f9;">
-                            <p style="margin: 0; font-family: 'Inter', sans-serif; font-size: 12px; color: #94a3b8;">&copy; 2026 THE GEMINI CHRONICLE AGENT. All rights reserved.</p>
-                        </td>
-                    </tr>
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="email-container"
+                    style="max-width: 600px; background-color: #ffffff; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); border-radius: 12px; overflow: hidden; animation: zoomInFade 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;">
+                    <tbody>
+                        <tr>
+                            <td align="center" class="header-title-card"
+                                style="background: linear-gradient(135deg, #064e3b, #0f766e, #047857, #022c22);                                    background-size: 200% 200%;                                    animation: gradientPan 6s ease infinite;                                    color: white;                                    text-align: center;                                    padding: 45px 20px;                                    border-bottom: 4px solid #34d399;                                    font-family: 'Inter', sans-serif;                                    font-size: 32px;                                    line-height: 1.2;                                    font-weight: 700;">
+                                THE GEMINI CHRONICLE
+                                AGENT<br><span class="header-date" style="font-size: 18px; font-weight: 400; margin-top: 8px; display: block; opacity: 0.9;">Wednesday, 22 April 2026</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="content-padding"
+                                style="padding: 25px 25px 15px; color: #334155; line-height: 1.6; font-family: 'Inter', sans-serif; font-size: 15px;">
+                                <div
+                                    style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
+                                    <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Geopolitics:</strong>
+                                    The UN Security Council remains totally deadlocked. Cyber-physical warfare and maritime jamming have become primary weapons as the multi-front conflict deepens.</div>
+                                <div
+                                    style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
+                                    <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Global News:</strong>
+                                    The US officially authorized a historic SPR release to combat fuel prices, while Europe faces rolling blackouts due to unprecedented heatwaves and grid failures.</div>
+                                <div
+                                    style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
+                                    <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">MENA:</strong>
+                                    The region has transitioned into a heavily fortified bunker state. Air defense systems are prioritizing the absolute protection of critical desalination plants over urban centers.</div>
+                                <div
+                                    style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
+                                    <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Future Tech:</strong>
+                                    SpaceX's xAI agent autonomously rerouted orbital communications to successfully bypass state-sponsored terrestrial jamming in the Middle East, proving its critical infrastructure value.</div>
+                                <div
+                                    style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
+                                    <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Business:</strong>
+                                    Airlines have completely abandoned the MENA region, and semiconductor stocks face massive sell-offs due to supply chain balkanization, while defense equities hit all-time highs.</div>
+                                <div
+                                    style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
+                                    <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Security &amp; Cyber:</strong>
+                                    Massive, state-sponsored GPS spoofing in the Red Sea blinded commercial shipping networks, causing near-miss collisions and halting all remaining civilian maritime transit.</div>
+                                <div
+                                    style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
+                                    <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Health:</strong>
+                                    The WHO declared a regional public health emergency across the Mediterranean, while NGOs desperately petition for military-escorted air drops of medical supplies into the Levant.</div>
+                                <div
+                                    style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
+                                    <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Climate:</strong>
+                                    The WMO confirmed that the sustained April thermal anomaly has permanently accelerated Himalayan glacial melt, heavily exacerbating the looming global water security crisis.</div>
+                                <div
+                                    style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
+                                    <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Markets:</strong>
+                                    Brent crude broke the $108/barrel resistance line. The DXY continues its historic climb as developing nations are priced out of the energy market due to spiking oil and collapsing local currencies.</div>
+                                <div
+                                    style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
+                                    <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Mega Projects:</strong>
+                                    Saudi and UAE overland "land-bridge" efforts have severely stalled due to the massive physical and logistical impossibility of sourcing enough heavy transport trucks to bypass the Strait of Hormuz.</div>
+                                <div
+                                    style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
+                                    <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">India National:</strong>
+                                    The PM authorized a partial SPR release, while the emergency <strong>National Bus & Transit Summit</strong> convened in New Delhi to aggressively fast-track alternative overland mass transport and heavy-duty electric fleets.</div>
+                                <div
+                                    style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
+                                    <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Telangana:</strong>
+                                    Amidst a punishing 46°C heatwave, a coalition of trade unions launched an <strong>indefinite hunger strike</strong> at Indira Park, Hyderabad, to vigorously protest the state's mandatory night shifts and unannounced residential blackouts.</div>
+                                <div
+                                    style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
+                                    <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Andhra Pradesh:</strong>
+                                    Visakhapatnam initiated rolling 4-hour residential blackouts to ensure an uninterrupted power supply for the city's critical IT corridors and data centers.</div>
+                                <div
+                                    style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
+                                    <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Sentiment:</strong>
+                                    Global social media discourse is heavily dominated by organized panic buying of agricultural staples and deep outrage over European energy conglomerate blackouts.</div>
+                                <div
+                                    style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
+                                    <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Deep Analysis:</strong>
+                                    The London insurance market effectively halted global trade by rendering the entire Middle East uninsurable, silently breaking the back of the just-in-time delivery model and forcing a shift to sovereign-backed shipping.</div>
+                                <div
+                                    style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
+                                    <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">History (Global):</strong>
+                                    On April 22, 1970, the first Earth Day was celebrated in the United States, officially launching the modern environmental movement.</div>
+                                <div
+                                    style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
+                                    <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">History (India):</strong>
+                                    On this day in 2009, the Indian Space Research Organisation (ISRO) successfully launched the radar imaging satellite RISAT-2, significantly boosting the nation's earth observation capabilities.</div>
+                                <div
+                                    style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
+                                    <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Week Review:</strong>
+                                    The geopolitical order collapsed, severing East-West trade routes and triggering a massive global commodity and energy shock.</div>
+                                <div
+                                    style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
+                                    <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Month Review:</strong>
+                                    April 2026 marks the violent end of globalized trade, transitioning humanity into an era of balkanized supply chains and AI-dependent infrastructure.</div>
+                                <div
+                                    style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
+                                    <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Gold:</strong>
+                                    Prices surged again in the Hyderabad market to ₹1,59,200 (24k) and ₹1,45,930 (22k) per 10g as institutional and retail investors hoard physical assets.</div>
+                                <div
+                                    style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: block; text-decoration: none; color: inherit; font-family: 'Inter', sans-serif; font-size: 15px;">
+                                    <strong style="color: #064e3b; font-weight: 600; font-family: 'Inter', sans-serif;">Indicators:</strong>
+                                    Brent oil crossed $108, the VIX remains elevated, and global agriculture commodities jumped 8%, guaranteeing severe, structural stagflation.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; padding: 20px 25px 40px;"><a
+                                    href="https://github.com/ravikiranoffl/TGCA/blob/main/2026/2026-04-22.md"
+                                    class="animated-button"
+                                    style="display: inline-block;                                       background: linear-gradient(135deg, #0f766e, #064e3b);                                       color: white;                                       padding: 15px 30px;                                       border-radius: 8px;                                       text-decoration: none;                                       font-weight: 600;                                       font-size: 17px;                                       box-shadow: 0 4px 15px rgba(15, 118, 110, 0.3);                                       animation: buttonPulse 2.5s infinite;                                       font-family: 'Inter', sans-serif;">
+                                    View Detailed Global Report </a></td>
+                        </tr>
+                        <tr>
+                            <td align="center"
+                                style="padding: 20px; font-size: 12px; color: #94a3b8; font-family: 'Inter', sans-serif; border-top: 1px solid #f1f5f9;">
+                                <p
+                                    style="margin: 0; font-family: 'Inter', sans-serif; font-size: 12px; color: #94a3b8;">
+                                    © 2026 THE GEMINI CHRONICLE AGENT. All rights reserved.</p>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             </td>
         </tr>
-    </table>
-</body>
-</html>
+    </tbody>
+</table>
