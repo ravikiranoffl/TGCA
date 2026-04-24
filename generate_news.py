@@ -613,14 +613,10 @@ CRITICAL:
         1. Use inline CSS alongside a <style> block for premium animations. Font family must be 'Inter', sans-serif.
         2. Create a Title Card header block featuring the text "THE GEMINI CHRONICLE AGENT" and today's date ({full_date_str}).
         3. You MUST apply this EXACT dynamic CSS to the Title Card header:
-           background: {daily_gradient}; background-size: 200% 200%; animation: titleShimmer 8s ease-in-out infinite; color: white; text-align: center; padding: 45px 20px; border-bottom: 4px solid #cbd5e1;
-        4. Inject these keyframes into your <style> tag:
-           @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap');
-           @keyframes fadeUp {{ from {{ opacity: 0; transform: translateY(20px); }} to {{ opacity: 1; transform: translateY(0); }} }}
-           @keyframes titleShimmer {{ 0% {{ background-position: 0% 50%; }} 50% {{ background-position: 100% 50%; }} 100% {{ background-position: 0% 50%; }} }}
-        5. Wrap the entire email body in a container with animation: fadeUp 0.8s forwards.
-        6. Format the summary points as a stunning, highly readable list (e.g., using subtle callout boxes, good padding, and bold categories).
-        7. At the bottom, add a beautiful, animated button for "View Detailed Global Report" linking to: https://github.com/ravikiranoffl/TGCA/blob/main/{folder_path}/{report_id_date}.md
+           background: {daily_gradient}; background-size: 200% 200%; color: white; text-align: center; padding: 45px 20px; border-bottom: 4px solid #cbd5e1;
+      
+        5. Format the summary points as a stunning, highly readable list (e.g., using subtle callout boxes, good padding, and bold categories).
+        7. At the bottom, add a beautiful button for "View Detailed Global Report" linking to: https://github.com/ravikiranoffl/TGCA/blob/main/{folder_path}/{report_id_date}.md
         8. OUTPUT ONLY RAW HTML. Do not wrap in ```html. Start exactly with <!DOCTYPE html>.
         
         RAW SUMMARY TO FORMAT:
