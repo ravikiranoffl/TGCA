@@ -2,7 +2,8 @@ name: Daily Global News Generator
 
 on:
   schedule:
-    - cron: '30 16 * * *' # 11:00 PM IST (17:30 UTC)
+    # Runs at 11:12 PM IST (17:42 UTC) to bypass top-of-hour traffic spikes
+    - cron: '42 17 * * *' 
   workflow_dispatch:      # Manual trigger for testing
 
 jobs:
@@ -21,22 +22,23 @@ jobs:
           python-version: '3.12'
 
       - name: Install Dependencies
-        run: pip install google-genai
+        # Clean inline installation, bypassing the need for a requirements.txt file
+        run: pip install google-genai beautifulsoup4 requests
 
       - name: Run News Generator Script
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
         run: python generate_news.py
 
       - name: Commit and Push Updates
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config --local user.email "tgca-bot@users.noreply.github.com"
+          git config --local user.name "tgca-bot"
           git add .
           git commit -m "GN$(date +'%Y%m%d')A1" || echo "No changes to commit"
           git push
 
-      # --- UPDATED STEP FOR '4th March 2026' FORMAT (WITH IST TIMEZONE) ---
       - name: Get Formatted Date
         run: |
           export TZ='Asia/Kolkata'
@@ -50,7 +52,6 @@ jobs:
           MONTH_YEAR=$(date +'%B %Y')
           echo "NOW=${DAY}${SUFFIX} ${MONTH_YEAR}" >> $GITHUB_ENV
 
-      # --- SEND THE FORMATTED HTML EMAIL ---
       - name: Send Breaking News Email
         uses: dawidd6/action-send-mail@v3
         with:
@@ -58,10 +59,7 @@ jobs:
           server_port: 465
           username: ${{ secrets.GMAIL_USER }}
           password: ${{ secrets.GMAIL_APP_PASSWORD }}
-
-          # Your new, clean subject line!
           subject: "Breaking News: ${{ env.NOW }}"
-
           to: ${{ secrets.GMAIL_USER }}
           from: "The Gemini Chronicle Agent"
           html_body: file://email_body.html
