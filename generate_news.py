@@ -297,9 +297,9 @@ Output strictly using the following Markdown format. Replace the bracketed instr
 ---
 
 ## SECTION 23 — Gold Rates (Hyderabad Market)
-**24 Carat price per 10g:** [Extract from LOCAL DATA: ₹ amount (+/- change)]
-**22 Carat price per 10g:** [Extract from LOCAL DATA: ₹ amount (+/- change)]
-**Reason for price movement:** [Extract from LOCAL DATA]
+24 Carat price per 10g: [Extract from LOCAL DATA: ₹ amount (+/- change)]
+22 Carat price per 10g: [Extract from LOCAL DATA: ₹ amount (+/- change)]
+Reason for price movement: [Extract from LOCAL DATA]
 ---
 *Data strictly sourced from: https://www.goodreturns.in/gold-rates/hyderabad.html*
 
