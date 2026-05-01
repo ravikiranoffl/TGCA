@@ -103,8 +103,8 @@ def generate_and_save_news():
     Use Google Search to find the latest news for today ({full_date_str}) in India.
     Return ONLY a factual summary of the following three topics. Be concise without missing essence/context
     
-    1. Top 4-5 news events in Telangana state today.
-    2. Top 4-5 news events in Andhra Pradesh state today.
+    1. Top 8-10 news events in Telangana state today.
+    2. Top 8-10 news events in Andhra Pradesh state today.
     3. Today's 24 Carat and 22 Carat Gold price per 10g in Hyderabad from the match Goodreturns website www.goodreturns.in/gold-rates/hyderabad.html including the price change from yesterday.
     """
     
@@ -150,7 +150,7 @@ Use the exact data provided below to write Section 14, Section 15, and Section 2
 1. You MUST use Google Search to find real-time news for today. Do not hallucinate. Do not leave any section empty! If a search result is empty, search again.
 2. Tone: Clear, neutral, factual, evidence-based, and policy-aware. No speculation.
 3. Style: Simple English, NO emojis, NO decorative formatting.
-4. Density: Keep every section concise (4-6 lines paragraph).
+4. Density: Keep every section concise (8-9 lines paragraph).
 5. Verification: Cross-check major geopolitical claims. If any data is unverified, missing, or uncertain, you MUST state: "This remains a developing story." Do not invent quotes or financial estimates.
 
 ⚠️ OUTPUT FORMAT 
@@ -238,7 +238,7 @@ Output strictly using the following Markdown format. Replace the bracketed instr
 ---
 
 ## SECTION 13 — India National (Politics & Governance)
-[Central government decisions, Supreme Court judgments, and national incidents.]
+[Central government decisions, Supreme Court judgments, and national incidents, Elections and others]
 
 ---
 
@@ -287,19 +287,20 @@ Output strictly using the following Markdown format. Replace the bracketed instr
 ---
 
 ## SECTION 21 — This Week in Review (Last 7 Days)
-[Concise summary of major developments from the past week. 5- 6 statements without missing context]
+[Concise summary of major developments from the past week. 7-8 statements without missing context]
 
 ---
 
 ## SECTION 22 — This Month in Review (From 1st of Current Month)
-[Structured recap of key global and regional developments. 5- 6 statements without missing context]
+[Structured recap of key global and regional developments. 7-8 statements without missing context]
 
 ---
 
 ## SECTION 23 — Gold Rates (Hyderabad Market)
 24 Carat price per 10g: [Extract from LOCAL DATA: ₹ amount (+/- change)]
 22 Carat price per 10g: [Extract from LOCAL DATA: ₹ amount (+/- change)]
-Reason for price movement: [Extract from LOCAL DATA]
+Reason for price movement: [Extract from LOCAL DATA] 
+unlike heading the text in this field shouldn't be #, or ** or any other md formattings, simple paragraph text only.
 ---
 *Data strictly sourced from: https://www.goodreturns.in/gold-rates/hyderabad.html*
 
