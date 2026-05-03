@@ -73,7 +73,7 @@ def fallback_bs4_scraper():
 
     # 2. Scrape AP & Telangana News via Google News RSS
     try:
-        for state in ["Telangana", "Andhra Pradesh"]:
+        for state in ["Telangana", "Andhra Pradesh", "India"]:
             rss_url = f"https://news.google.com/rss/search?q={state}+news+when:1d"
             rss_resp = requests.get(rss_url, headers=headers, timeout=10)
             rss_soup = BeautifulSoup(rss_resp.content, 'html.parser')
@@ -105,7 +105,8 @@ def generate_and_save_news():
     
     1. Top 8-10 news events in Telangana state today.
     2. Top 8-10 news events in Andhra Pradesh state today.
-    3. Today's 24 Carat and 22 Carat Gold price per 10g in Hyderabad from the match Goodreturns website www.goodreturns.in/gold-rates/hyderabad.html including the price change from yesterday.
+    3. Top 8-10 news events in Indian National 
+    4. Today's 24 Carat and 22 Carat Gold price per 10g in Hyderabad from the match Goodreturns website www.goodreturns.in/gold-rates/hyderabad.html including the price change from yesterday.
     """
     
     local_news_data = fetch_with_fallback(research_prompt, use_search=True)
@@ -123,7 +124,7 @@ def generate_and_save_news():
         raw_bs4_data = fallback_bs4_scraper()
         
         # Pass the scraped text back into Gemini to format neatly (with search turned OFF)
-        clean_prompt = f"Summarize this raw scraped data into 3 clean sections: 1. Telangana News, 2. Andhra Pradesh News, and 3. Gold Rates in Hyderabad.\n\n{raw_bs4_data}"
+        clean_prompt = f"Summarize this raw scraped data into 3 clean sections: 1. Telangana News, 2. Andhra Pradesh News, 3.Indian News and 4. Gold Rates in Hyderabad.\n\n{raw_bs4_data}"
         local_news_data = fetch_with_fallback(clean_prompt, use_search=False)
     else:
         print("Gemini Search Tool successfully fetched the local data. Bypassing BS4.")
@@ -238,7 +239,7 @@ Output strictly using the following Markdown format. Replace the bracketed instr
 ---
 
 ## SECTION 13 — India National (Politics & Governance)
-[Central government decisions, Supreme Court judgments, and national incidents, Elections and others]
+[Extract from LOCAL DATA: Gov decisions, infrastructure, incidents, and notable events.]
 
 ---
 
