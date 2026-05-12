@@ -1,10 +1,10 @@
-Name: The Gemini Chronicle Agent
+Name: Daily Global News Generator
 
 on:
   schedule:
-    # Runs at 8:42 PM IST (15:12 UTC)
+    # Runs at 8:42 PM IST (15:12 UTC) - Offset to avoid traffic
     - cron: '12 15 * * *' 
-    # Runs at 3:42 AM IST (22:12 UTC) 
+    # Runs at 3:42 AM IST (22:12 UTC) - Offset to avoid traffic
     - cron: '12 22 * * *'
   workflow_dispatch:      # Manual trigger for testing
 
@@ -34,6 +34,39 @@ jobs:
         run: python generate_news.py
 
       - name: Commit and Push Updates
+        run: |
+          git config --local user.email "143505051+masterrkoffl@users.noreply.github.com"
+          git config --local user.name "tgca-bot"
+          git add .
+          
+          git commit -m "GN$(date +'%Y%m%d')A1" -m "Co-authored-by: ravikiranoffl <171322216+ravikiranoffl@users.noreply.github.com>" || echo "No changes to commit"
+          
+          git push
+
+      - name: Get Formatted Date
+        run: |
+          export TZ='Asia/Kolkata'
+          DAY=$(date +%-d)
+          case $DAY in
+            1|21|31) SUFFIX="st";;
+            2|22)    SUFFIX="nd";;
+            3|23)    SUFFIX="rd";;
+            *)       SUFFIX="th";;
+          esac
+          MONTH_YEAR=$(date +'%B %Y')
+          echo "NOW=${DAY}${SUFFIX} ${MONTH_YEAR}" >> $GITHUB_ENV
+
+      - name: Send Breaking News Email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.GMAIL_USER }}
+          password: ${{ secrets.GMAIL_APP_PASSWORD }}
+          subject: "Breaking News: ${{ env.NOW }}"
+          to: ${{ secrets.GMAIL_USER }}
+          from: "The Gemini Chronicle Agent"
+          html_body: file://email_body.html
         run: |
           git config --local user.email "143505051+masterrkoffl@users.noreply.github.com"
           git config --local user.name "tgca-bot"
