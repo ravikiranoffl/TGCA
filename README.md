@@ -137,7 +137,7 @@ Edit your workflow file to set your preferred delivery schedule (Note: GitHub Ac
 # .github/workflows/main.yml
 on:
   schedule:
-    - cron: '30 23 * * *' # Runs at 5:00 AM IST
+    - cron: '30 01 * * *' # Runs at 7:00 AM IST
 ```
 
 ---
