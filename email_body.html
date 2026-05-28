@@ -1,276 +1,206 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Gemini Chronicle Agent - Daily Brief</title>
-    <!-- Preload Inter font for better rendering, though email clients may not support external fonts fully -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
-    <style>
-        /* Global styles and animations */
-        body {
-            margin: 0;
-            padding: 0;
-            -webkit-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
-            width: 100% !important;
-            font-family: 'Inter', sans-serif; /* Fallback included */
-            background-color: #f4f4f5; /* Light background for the whole email */
-        }
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>The Gemini Chronicle Agent - Daily Briefing</title>
+    <style type="text/css">
+        /* Font Import - Inter from Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-        table {
-            border-collapse: collapse;
-            mso-table-lspace: 0pt;
-            mso-table-rspace: 0pt;
-        }
-
-        img {
-            -ms-interpolation-mode: bicubic;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        /* Title Card Animation */
+        /* Title Card Background Animation */
         @keyframes gradient-animation {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* Apply animation to the class, also inline on the element for robustness */
-        .title-card-animated {
-            animation: gradient-animation 15s ease infinite;
-        }
-        
-        /* Button hover effect - may not work in all email clients but good practice */
-        .button:hover {
-            background-color: #4a69bd !important;
-            border-color: #4a69bd !important;
-        }
-
-        /* Responsive adjustments for narrow screens */
-        @media only screen and (max-width: 600px) {
-            .container {
+        /* Responsive adjustments for email clients */
+        @media screen and (max-width: 600px) {
+            .email-container {
                 width: 100% !important;
             }
             .content-area {
-                padding: 15px !important;
-            }
-            .title-card-h2 {
-                font-size: 28px !important;
-                line-height: 32px !important;
-            }
-            .title-card-h3 {
-                font-size: 18px !important;
-                line-height: 22px !important;
-            }
-            .news-item {
-                padding: 15px !important;
-                margin-bottom: 15px !important;
-            }
-            .button-wrapper {
                 padding: 20px 15px !important;
             }
-            .footer-text {
-                font-size: 10px !important;
+            .title-card {
+                padding: 30px 15px !important;
+            }
+            .news-item {
+                padding: 12px 15px !important;
+                font-size: 14px !important;
+            }
+            .button-wrapper {
+                padding: 20px 15px 30px !important;
+            }
+            .button {
+                padding: 12px 25px !important;
+                font-size: 15px !important;
             }
         }
     </style>
 </head>
-<body style="margin: 0; padding: 0; background-color: #f4f4f5; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased;">
-    <center>
-        <!-- Main Email Container -->
-        <table class="container" role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-            
-            <!-- Title Card Header Block -->
-            <tr>
-                <td class="title-card-animated" style="
-                    background: linear-gradient(-45deg, #09090b, #27272a, #3f3f46, #09090b); 
-                    background-size: 200% 200%; 
-                    color: white; 
-                    text-align: center; 
-                    padding: 45px 20px; 
-                    border-bottom: 4px solid #cbd5e1;
-                    font-family: 'Inter', sans-serif; /* Ensure font is applied */
-                    animation: gradient-animation 15s ease infinite; /* Inline animation for better client support */
-                ">
-                    <h2 class="title-card-h2" style="font-family: 'Inter', sans-serif; font-size: 36px; line-height: 40px; margin: 0 0 10px 0; font-weight: 700;">THE GEMINI CHRONICLE AGENT</h2>
-                    <h3 class="title-card-h3" style="font-family: 'Inter', sans-serif; font-size: 22px; line-height: 26px; margin: 0; font-weight: 300; opacity: 0.9;">Thursday, 28 May 2026</h3>
-                </td>
-            </tr>
+<body style="margin: 0; padding: 0; background-color: #f3f4f6; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; word-break: break-word; line-height: 1.5;">
 
-            <!-- Content Area - News Summary -->
-            <tr>
-                <td class="content-area" style="padding: 30px; background-color: #ffffff;">
-                    <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 24px; color: #333333; margin-top: 0; margin-bottom: 25px;">
-                        Here's your daily briefing from The Gemini Chronicle Agent, summarising key global and regional developments:
-                    </p>
+    <!-- Outer wrapper for centering and max-width -->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: #f3f4f6;">
+        <tr>
+            <td align="center" style="padding: 0;">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="max-width: 600px; border-collapse: collapse;" class="email-container">
+                    <tr>
+                        <td align="center" style="padding: 0;">
+                            <!-- Title Card Header Block -->
+                            <div class="title-card" style="background: linear-gradient(-45deg, #082f49, #0369a1, #0f766e, #082f49); background-size: 200% 200%; color: white; text-align: center; padding: 45px 20px; border-bottom: 4px solid #cbd5e1; animation: gradient-animation 15s ease infinite;">
+                                <h1 style="margin: 0; font-size: 32px; line-height: 1.2; font-weight: 700;">THE GEMINI CHRONICLE AGENT</h1>
+                                <p style="margin: 10px 0 0; font-size: 18px; line-height: 1.5; font-weight: 400; color: rgba(255, 255, 255, 0.9);">Thursday, 28 May 2026</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 30px 20px; background-color: #ffffff;" class="content-area">
+                            <!-- News Summary List -->
+                            <h2 style="margin-top: 0; margin-bottom: 25px; font-size: 24px; color: #1f2937; font-weight: 600; line-height: 1.3;">Daily Intelligence Briefing</h2>
 
-                    <!-- News Summary Items -->
-                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-                        <tr>
-                            <td style="padding-bottom: 20px;">
-                                <div class="news-item" style="background-color: #f8f8fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-                                    <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 24px; color: #333333; margin: 0;">
-                                        <strong style="color: #1a202c;">Geopolitics:</strong> Russia-China strategic partnership deepened; Quad reaffirmed Indo-Pacific commitment; ECB warned on geopolitical risks.
-                                    </p>
-                                </div>
-                                <div class="news-item" style="background-color: #f8f8fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-                                    <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 24px; color: #333333; margin: 0;">
-                                        <strong style="color: #1a202c;">Global News:</strong> USMCA review starting; Europe rearming; Russia and China boosting North Korea engagement.
-                                    </p>
-                                </div>
-                                <div class="news-item" style="background-color: #f8f8fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-                                    <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 24px; color: #333333; margin: 0;">
-                                        <strong style="color: #1a202c;">MENA:</strong> Conflict contributing to economic risks and uncertainty.
-                                    </p>
-                                </div>
-                                <div class="news-item" style="background-color: #f8f8fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-                                    <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 24px; color: #333333; margin: 0;">
-                                        <strong style="color: #1a202c;">Future Tech:</strong> DTCC tokenizing assets on Stellar blockchain; Trident Digital expanding AI and digital infrastructure.
-                                    </p>
-                                </div>
-                                <div class="news-item" style="background-color: #f8f8fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-                                    <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 24px; color: #333333; margin: 0;">
-                                        <strong style="color: #1a202c;">Business:</strong> Apogee Therapeutics secured $1.3B financing; Trident Digital regained Nasdaq compliance; Americold launched efficiency initiative.
-                                    </p>
-                                </div>
-                                <div class="news-item" style="background-color: #f8f8fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-                                    <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 24px; color: #333333; margin: 0;">
-                                        <strong style="color: #1a202c;">Science:</strong> Apogee Therapeutics advancing a key biologic for inflammatory diseases.
-                                    </p>
-                                </div>
-                                <div class="news-item" style="background-color: #f8f8fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-                                    <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 24px; color: #333333; margin: 0;">
-                                        <strong style="color: #1a202c;">Health:</strong> No major global health updates reported.
-                                    </p>
-                                </div>
-                                <div class="news-item" style="background-color: #f8f8fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-                                    <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 24px; color: #333333; margin: 0;">
-                                        <strong style="color: #1a202c;">Security:</strong> Concerns over 2026 World Cup terrorist threat; rebuilding US missile inventory.
-                                    </p>
-                                </div>
-                                <div class="news-item" style="background-color: #f8f8fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-                                    <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 24px; color: #333333; margin: 0;">
-                                        <strong style="color: #1a202c;">Climate:</strong> Energy price shocks continue; Quad focused on energy security and critical minerals.
-                                    </p>
-                                </div>
-                                <div class="news-item" style="background-color: #f8f8fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-                                    <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 24px; color: #333333; margin: 0;">
-                                        <strong style="color: #1a202c;">Markets:</strong> Equities resilient, G7 market share rebound led by US tech; ECB warned on fiscal risks.
-                                    </p>
-                                </div>
-                                <div class="news-item" style="background-color: #f8f8fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-                                    <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 24px; color: #333333; margin: 0;">
-                                        <strong style="color: #1a202c;">Mega Projects:</strong> Trident Digital building sovereign-scale digital infrastructure.
-                                    </p>
-                                </div>
-                                <div class="news-item" style="background-color: #f8f8fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-                                    <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 24px; color: #333333; margin: 0;">
-                                        <strong style="color: #1a202c;">Migration:</strong> No major global migration shifts reported.
-                                    </p>
-                                </div>
-                                <div class="news-item" style="background-color: #f8f8fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-                                    <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 24px; color: #333333; margin: 0;">
-                                        <strong style="color: #1a202c;">India National:</strong> Hosted 11th Quad foreign ministers' meeting on Indo-Pacific stability.
-                                    </p>
-                                </div>
-                                <div class="news-item" style="background-color: #f8f8fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-                                    <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 24px; color: #333333; margin: 0;">
-                                        <strong style="color: #1a202c;">Telangana:</strong> No specific top news events reported for May 27, 2026.
-                                    </p>
-                                </div>
-                                <div class="news-item" style="background-color: #f8f8fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-                                    <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 24px; color: #333333; margin: 0;">
-                                        <strong style="color: #1a202c;">Andhra Pradesh:</strong> No specific top news events reported for May 27, 2026.
-                                    </p>
-                                </div>
-                                <div class="news-item" style="background-color: #f8f8fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-                                    <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 24px; color: #333333; margin: 0;">
-                                        <strong style="color: #1a202c;">MENA Strategy:</strong> Region remains central to geopolitical and economic risk assessments.
-                                    </p>
-                                </div>
-                                <div class="news-item" style="background-color: #f8f8fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-                                    <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 24px; color: #333333; margin: 0;">
-                                        <strong style="color: #1a202c;">Sentiment:</strong> Colombian public opinion shifting right ahead of elections.
-                                    </p>
-                                </div>
-                                <div class="news-item" style="background-color: #f8f8fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-                                    <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 24px; color: #333333; margin: 0;">
-                                        <strong style="color: #1a202c;">Deep Analysis:</strong> Quad meeting's strategic importance for Indo-Pacific stability and economic competition.
-                                    </p>
-                                </div>
-                                <div class="news-item" style="background-color: #f8f8fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-                                    <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 24px; color: #333333; margin: 0;">
-                                        <strong style="color: #1a202c;">History (Global):</strong> No specific events reported for May 28, 2026.
-                                    </p>
-                                </div>
-                                <div class="news-item" style="background-color: #f8f8fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-                                    <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 24px; color: #333333; margin: 0;">
-                                        <strong style="color: #1a202c;">History (India):</strong> No specific events reported for May 28, 2026.
-                                    </p>
-                                </div>
-                                <div class="news-item" style="background-color: #f8f8fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-                                    <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 24px; color: #333333; margin: 0;">
-                                        <strong style="color: #1a202c;">Week Review:</strong> Putin-Xi summit, US-China relations, Quad meeting, ECB warning, tech advancements.
-                                    </p>
-                                </div>
-                                <div class="news-item" style="background-color: #f8f8fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-                                    <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 24px; color: #333333; margin: 0;">
-                                        <strong style="color: #1a202c;">Month Review:</strong> Geopolitical realignments, economic concerns, and technological progress.
-                                    </p>
-                                </div>
-                                <div class="news-item" style="background-color: #f8f8fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-                                    <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 24px; color: #333333; margin: 0;">
-                                        <strong style="color: #1a202c;">Gold:</strong> Hyderabad 24 Carat gold at ₹1,58,290/10g (down ₹600); 22 Carat at ₹1,45,150/10g (down ₹550).
-                                    </p>
-                                </div>
-                                <div class="news-item" style="background-color: #f8f8fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-                                    <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 24px; color: #333333; margin: 0;">
-                                        <strong style="color: #1a202c;">Indicators:</strong> Global equities showing gains; inflation risks from commodity prices and wage growth.
-                                    </p>
-                                </div>
-                                <div class="news-item" style="background-color: #f8f8fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 0; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-                                    <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 24px; color: #333333; margin: 0;">
-                                        <strong style="color: #1a202c;">Insight:</strong> Russia-China increasing diplomatic and economic support for North Korea, potentially altering Korean Peninsula dynamics.
-                                    </p>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
+                            <!-- Geopolitics -->
+                            <div class="news-item" style="background-color: #f8fafc; border-left: 5px solid #082f49; padding: 15px 20px; border-radius: 8px; margin-bottom: 12px; line-height: 1.6; color: #374151; font-size: 15px;">
+                                <strong style="color: #082f49;">Geopolitics:</strong> U.S. and Iran exchanged strikes near the Strait of Hormuz, intensifying tensions; China advocates for multilateralism at the UN; Japan and Philippines strengthen ties.
+                            </div>
 
-            <!-- Button Block -->
-            <tr>
-                <td class="button-wrapper" style="padding: 30px; text-align: center; background-color: #f4f4f5; border-top: 1px solid #e0e0e0;">
-                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: 0 auto;">
-                        <tr>
-                            <td style="border-radius: 6px; background-color: #0d1e37;">
-                                <a href="https://github.com/ravikiranoffl/TGCA/blob/main/2026/2026-05-28.md" target="_blank" class="button" 
-                                   style="font-family: 'Inter', sans-serif; font-size: 18px; font-weight: bold; line-height: 1; 
-                                          padding: 15px 30px; text-align: center; color: #ffffff; text-decoration: none; 
-                                          display: block; border-radius: 6px; border: 1px solid #0d1e37; background-color: #0d1e37;">
-                                    View Detailed Global Report
-                                </a>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
+                            <!-- Global News -->
+                            <div class="news-item" style="background-color: #f8fafc; border-left: 5px solid #0369a1; padding: 15px 20px; border-radius: 8px; margin-bottom: 12px; line-height: 1.6; color: #374151; font-size: 15px;">
+                                <strong style="color: #0369a1;">Global News:</strong> U.S. military actions in MENA, France summons Russian ambassador over Ukraine strikes, Japan overhauls intelligence, Uganda closes DRC border over Ebola.
+                            </div>
 
-            <!-- Footer -->
-            <tr>
-                <td style="padding: 20px; text-align: center; background-color: #e0e0e0;">
-                    <p class="footer-text" style="font-family: 'Inter', sans-serif; font-size: 12px; line-height: 18px; color: #555555; margin: 0;">
-                        This email was generated by THE GEMINI CHRONICLE AGENT.<br>
-                        &copy; 2026 All rights reserved.
-                    </p>
-                </td>
-            </tr>
-        </table>
-    </center>
+                            <!-- MENA -->
+                            <div class="news-item" style="background-color: #f8fafc; border-left: 5px solid #0f766e; padding: 15px 20px; border-radius: 8px; margin-bottom: 12px; line-height: 1.6; color: #374151; font-size: 15px;">
+                                <strong style="color: #0f766e;">MENA:</strong> U.S.-Iran tensions escalate with military strikes; oil prices jump; Israel targets Hamas commander; emerging Egypt-Turkey-Pakistan-Saudi alliance.
+                            </div>
+
+                            <!-- Future Tech -->
+                            <div class="news-item" style="background-color: #f8fafc; border-left: 5px solid #6b21a8; padding: 15px 20px; border-radius: 8px; margin-bottom: 12px; line-height: 1.6; color: #374151; font-size: 15px;">
+                                <strong style="color: #6b21a8;">Future Tech:</strong> Hyderabad emerges as a major AI-data center hub; U.S. and China pursue differing AI strategies; Japan and Philippines boost AI and space cooperation.
+                            </div>
+
+                            <!-- Business -->
+                            <div class="news-item" style="background-color: #f8fafc; border-left: 5px solid #a16207; padding: 15px 20px; border-radius: 8px; margin-bottom: 12px; line-height: 1.6; color: #374151; font-size: 15px;">
+                                <strong style="color: #a16207;">Business:</strong> Family offices reduce U.S. dollar exposure amid global uncertainty; global economic outlook deteriorates due to Middle East conflict.
+                            </div>
+
+                            <!-- Science -->
+                            <div class="news-item" style="background-color: #f8fafc; border-left: 5px solid #0f766e; padding: 15px 20px; border-radius: 8px; margin-bottom: 12px; line-height: 1.6; color: #374151; font-size: 15px;">
+                                <strong style="color: #0f766e;">Science:</strong> OPCW confirms Syrian regime withheld chemical weapons information.
+                            </div>
+
+                            <!-- Health -->
+                            <div class="news-item" style="background-color: #f8fafc; border-left: 5px solid #dc2626; padding: 15px 20px; border-radius: 8px; margin-bottom: 12px; line-height: 1.6; color: #374151; font-size: 15px;">
+                                <strong style="color: #dc2626;">Health:</strong> Uganda closes border with DRC over Ebola; Andhra Pradesh screens for Ebola; India observes Menstrual Hygiene Day.
+                            </div>
+
+                            <!-- Security -->
+                            <div class="news-item" style="background-color: #f8fafc; border-left: 5px solid #082f49; padding: 15px 20px; border-radius: 8px; margin-bottom: 12px; line-height: 1.6; color: #374151; font-size: 15px;">
+                                <strong style="color: #082f49;">Security:</strong> U.S.-Iran military exchanges; Israel conducts Beirut airstrike; Japan approves intelligence overhaul; India focuses on border security.
+                            </div>
+
+                            <!-- Climate -->
+                            <div class="news-item" style="background-color: #f8fafc; border-left: 5px solid #16a34a; padding: 15px 20px; border-radius: 8px; margin-bottom: 12px; line-height: 1.6; color: #374151; font-size: 15px;">
+                                <strong style="color: #16a34a;">Climate:</strong> Oil prices rebound due to MENA tensions; Strait of Hormuz closure concerns economists; India faces severe heatwaves; AP initiates Godavari anti-pollution plan.
+                            </div>
+
+                            <!-- Markets -->
+                            <div class="news-item" style="background-color: #f8fafc; border-left: 5px solid #a16207; padding: 15px 20px; border-radius: 8px; margin-bottom: 12px; line-height: 1.6; color: #374151; font-size: 15px;">
+                                <strong style="color: #a16207;">Markets:</strong> Crude oil prices rebounded; Asian equities saw losses; dollar sentiment weakens among family offices; central banks maintain hawkish stance.
+                            </div>
+                            
+                            <!-- Mega Projects -->
+                            <div class="news-item" style="background-color: #f8fafc; border-left: 5px solid #0369a1; padding: 15px 20px; border-radius: 8px; margin-bottom: 12px; line-height: 1.6; color: #374151; font-size: 15px;">
+                                <strong style="color: #0369a1;">Mega Projects:</strong> India reviews extensive infrastructure projects; Telangana plans fiber network; Hyderabad develops into a data center hub.
+                            </div>
+
+                            <!-- Migration -->
+                            <div class="news-item" style="background-color: #f8fafc; border-left: 5px solid #dc2626; padding: 15px 20px; border-radius: 8px; margin-bottom: 12px; line-height: 1.6; color: #374151; font-size: 15px;">
+                                <strong style="color: #dc2626;">Migration:</strong> Uganda's border closure with DRC over Ebola highlights cross-border health crisis challenges.
+                            </div>
+
+                            <!-- India National -->
+                            <div class="news-item" style="background-color: #f8fafc; border-left: 5px solid #4338ca; padding: 15px 20px; border-radius: 8px; margin-bottom: 12px; line-height: 1.6; color: #374151; font-size: 15px;">
+                                <strong style="color: #4338ca;">India National:</strong> Siddaramaiah steps down as Karnataka CM; CBI makes arrests in dowry and NEET cases; PM Modi urges water dispute resolution and heatwave precautions.
+                            </div>
+
+                            <!-- Telangana -->
+                            <div class="news-item" style="background-color: #f8fafc; border-left: 5px solid #8b5cf6; padding: 15px 20px; border-radius: 8px; margin-bottom: 12px; line-height: 1.6; color: #374151; font-size: 15px;">
+                                <strong style="color: #8b5cf6;">Telangana:</strong> Severe heatwave alert issued; digital connectivity push; Hyderabad as AI-Data Centre hub; protests threatened over pay revisions.
+                            </div>
+
+                            <!-- Andhra Pradesh -->
+                            <div class="news-item" style="background-color: #f8fafc; border-left: 5px solid #ef4444; padding: 15px 20px; border-radius: 8px; margin-bottom: 12px; line-height: 1.6; color: #374151; font-size: 15px;">
+                                <strong style="color: #ef4444;">Andhra Pradesh:</strong> Ebola screening at airport; intensifying heatwave warning; Godavari River anti-pollution plan; YSRCP plans protest campaign.
+                            </div>
+
+                            <!-- MENA Strategy -->
+                            <div class="news-item" style="background-color: #f8fafc; border-left: 5px solid #0f766e; padding: 15px 20px; border-radius: 8px; margin-bottom: 12px; line-height: 1.6; color: #374151; font-size: 15px;">
+                                <strong style="color: #0f766e;">MENA Strategy:</strong> Emerging quadrilateral alliance of Egypt, Turkey, Pakistan, Saudi Arabia to strengthen regional security and project influence.
+                            </div>
+
+                            <!-- Sentiment -->
+                            <div class="news-item" style="background-color: #f8fafc; border-left: 5px solid #fbbf24; padding: 15px 20px; border-radius: 8px; margin-bottom: 12px; line-height: 1.6; color: #374151; font-size: 15px;">
+                                <strong style="color: #fbbf24;">Sentiment:</strong> Localized protests planned in Andhra Pradesh and Telangana over political and pay issues.
+                            </div>
+
+                            <!-- Deep Analysis -->
+                            <div class="news-item" style="background-color: #f8fafc; border-left: 5px solid #082f49; padding: 15px 20px; border-radius: 8px; margin-bottom: 12px; line-height: 1.6; color: #374151; font-size: 15px;">
+                                <strong style="color: #082f49;">Deep Analysis:</strong> U.S.-Iran military escalation around Strait of Hormuz raises risk of wider conflict and impacts global energy markets.
+                            </div>
+
+                            <!-- History (Global) -->
+                            <div class="news-item" style="background-color: #f8fafc; border-left: 5px solid #94a3b8; padding: 15px 20px; border-radius: 8px; margin-bottom: 12px; line-height: 1.6; color: #374151; font-size: 15px;">
+                                <strong style="color: #94a3b8;">History (Global):</strong> No specific events for today.
+                            </div>
+
+                            <!-- History (India) -->
+                            <div class="news-item" style="background-color: #f8fafc; border-left: 5px solid #94a3b8; padding: 15px 20px; border-radius: 8px; margin-bottom: 12px; line-height: 1.6; color: #374151; font-size: 15px;">
+                                <strong style="color: #94a3b8;">History (India):</strong> No specific events for today.
+                            </div>
+
+                            <!-- Week Review -->
+                            <div class="news-item" style="background-color: #f8fafc; border-left: 5px solid #0369a1; padding: 15px 20px; border-radius: 8px; margin-bottom: 12px; line-height: 1.6; color: #374151; font-size: 15px;">
+                                <strong style="color: #0369a1;">Week Review:</strong> Escalating U.S.-Iran tensions, deteriorating global economic outlook, de-dollarization trend, continued Ukraine conflict concerns, India's infrastructure push, and regional heatwaves.
+                            </div>
+
+                            <!-- Month Review -->
+                            <div class="news-item" style="background-color: #f8fafc; border-left: 5px solid #082f49; padding: 15px 20px; border-radius: 8px; margin-bottom: 12px; line-height: 1.6; color: #374151; font-size: 15px;">
+                                <strong style="color: #082f49;">Month Review:</strong> Persistent U.S.-Iran tensions; global economic downturn expectations; de-dollarization; tech sector growth in AI; Ebola outbreaks; India's development and policy actions.
+                            </div>
+
+                            <!-- Gold -->
+                            <div class="news-item" style="background-color: #f8fafc; border-left: 5px solid #a16207; padding: 15px 20px; border-radius: 8px; margin-bottom: 12px; line-height: 1.6; color: #374151; font-size: 15px;">
+                                <strong style="color: #a16207;">Gold:</strong> 24 Carat down ₹2,230 to ₹156,060/10g; 22 Carat down ₹2,050 to ₹143,050/10g.
+                            </div>
+
+                            <!-- Indicators -->
+                            <div class="news-item" style="background-color: #f8fafc; border-left: 5px solid #0369a1; padding: 15px 20px; border-radius: 8px; margin-bottom: 12px; line-height: 1.6; color: #374151; font-size: 15px;">
+                                <strong style="color: #0369a1;">Indicators:</strong> Crude oil up; USD index sentiment weaker; Asian equities down; inflation expected to rise.
+                            </div>
+
+                            <!-- Insight -->
+                            <div class="news-item" style="background-color: #fffbeb; border-left: 5px solid #f59e0b; padding: 15px 20px; border-radius: 8px; margin-bottom: 12px; line-height: 1.6; color: #374151; font-size: 15px;">
+                                <strong style="color: #f59e0b;">Insight:</strong> The emerging quadrilateral alliance in the MENA region signals a significant, potentially underreported shift towards a non-Western power bloc impacting global geopolitics and arms trade.
+                            </div>
+                            
+                            <!-- End of Report message -->
+                            <p style="text-align: center; margin-top: 30px; margin-bottom: 0; font-size: 14px; color: #6b7280; line-height: 1.5;">-- END OF REPORT --</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" style="padding: 25px 20px 40px; background-color: #ffffff;" class="button-wrapper">
+                            <!-- View Detailed Global Report Button -->
+                            <a href="https://github.com/ravikiranoffl/TGCA/blob/main/2026/2026-05-28.md" target="_blank" style="background-color: #0ea5e9; color: #ffffff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block; line-height: 1.2;">View Detailed Global Report</a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
 </body>
 </html>
