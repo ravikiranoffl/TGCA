@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>THE GEMINI CHRONICLE AGENT</title>
-    <!-- Google Fonts import for Inter. Fallback to sans-serif if not loaded. -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Gemini Chronicle Agent - Daily Briefing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style type="text/css">
-        /* Client-specific Styles & Reset */
+        /* Client-specific Styles & Resets */
         body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
         table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
-        img { -ms-interpolation-mode: bicubic; }
+        img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
         a[x-apple-data-detectors] {
             color: inherit !important;
             text-decoration: none !important;
@@ -20,445 +19,267 @@
             line-height: inherit !important;
         }
 
-        /* General Body & Container Styles */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif;
-            background-color: #f7fafc; /* Light gray background */
-            color: #333333;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #ffffff; /* White content background */
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            overflow: hidden; /* For border-radius effect */
+        /* Responsive Styles */
+        @media screen and (max-width: 600px) {
+            .full-width-image { width: 100% !important; height: auto !important; }
+            .stack-column { width: 100% !important; display: block !important; }
+            .center-text-on-mobile { text-align: center !important; }
+            .padding-mobile { padding: 0 15px !important; }
         }
 
-        /* Header Animation */
-        @keyframes gradientShift {
+        /* Premium Animation for Title Card */
+        @keyframes gradient-animation {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-        .header-animated {
-            animation: gradientShift 15s ease infinite;
-        }
-
-        /* Responsive Styles (Media Queries) */
-        @media screen and (max-width: 600px) {
-            .container {
-                width: 100% !important;
-                border-radius: 0 !important;
-                box-shadow: none !important;
-            }
-            .content-block {
-                padding: 15px !important;
-            }
-            .title-card h1 {
-                font-size: 28px !important;
-                line-height: 1.2 !important;
-            }
-            .title-card h2 {
-                font-size: 16px !important;
-            }
-            .news-item-wrapper td {
-                padding-bottom: 10px !important;
-            }
-            .news-item-box td {
-                padding: 15px !important;
-            }
+        .animated-header {
+            animation: gradient-animation 15s ease infinite;
         }
     </style>
 </head>
-<body style="margin: 0; padding: 0; font-family: 'Inter', sans-serif; background-color: #f7fafc; color: #333333; line-height: 1.6; -webkit-font-smoothing: antialiased;">
+<body style="margin: 0; padding: 0; background-color: #f7fafc; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased;">
 
-    <!-- Outer Table for Centering and Max-Width -->
-    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed;">
+    <!-- Outer Table for Centering and Background -->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: #f7fafc;">
         <tr>
-            <td align="center" style="padding: 20px 0;">
-                <!-- Main Content Container -->
-                <table role="presentation" class="container" width="600" cellspacing="0" cellpadding="0" border="0" style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); overflow: hidden;">
-                    <!-- Title Card Header -->
+            <td align="center" style="padding: 0;">
+                <!-- Main Email Container -->
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; border-collapse: collapse;" role="presentation">
+                    <!-- Title Card Header Block -->
                     <tr>
-                        <td class="title-card header-animated" align="center" style="background: linear-gradient(-45deg, #4a044e, #701a75, #831843, #4a044e); background-size: 200% 200%; color: white; text-align: center; padding: 45px 20px; border-bottom: 4px solid #cbd5e1;">
-                            <h1 style="margin: 0; font-size: 36px; font-weight: 700; line-height: 1.2; letter-spacing: 2px;">THE GEMINI CHRONICLE AGENT</h1>
-                            <h2 style="margin: 10px 0 0; font-size: 18px; font-weight: 300; line-height: 1.5;">Friday, 05 June 2026</h2>
+                        <td class="animated-header" style="background: linear-gradient(-45deg, #2e1065, #4c1d95, #312e81, #2e1065); background-size: 200% 200%; color: white; text-align: center; padding: 45px 20px; border-bottom: 4px solid #cbd5e1;">
+                            <h1 style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 32px; line-height: 1.2; margin: 0 0 10px 0; color: #ffffff;">THE GEMINI CHRONICLE AGENT</h1>
+                            <p style="font-family: 'Inter', sans-serif; font-weight: 400; font-size: 18px; line-height: 1.5; margin: 0; color: #ffffff;">Friday, 05 June 2026</p>
                         </td>
                     </tr>
-
-                    <!-- News Summary Section -->
+                    
+                    <!-- Main Content Area -->
                     <tr>
-                        <td style="padding: 30px;">
-                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                        <td style="padding: 30px 20px; background-color: #f7fafc;">
+                            <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; color: #4a5568; margin-bottom: 25px;">
+                                Here's your daily intelligence briefing:
+                            </p>
+
+                            <!-- News Categories Section -->
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
                                 <tr>
-                                    <td style="padding-bottom: 20px;">
-                                        <h3 style="margin: 0; font-size: 22px; color: #4a044e; text-align: center; font-weight: 700;">Daily Intelligence Briefing</h3>
+                                    <td style="padding-bottom: 25px;">
+                                        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #2e1065; margin: 0 0 15px 0;">Geopolitics</h2>
+                                        <div style="background-color: #ffffff; border-left: 4px solid #4c1d95; padding: 15px 20px; margin-bottom: 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+                                            <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #4a5568; margin: 0;">Heightened Great Power Competition between U.S. and China, firming Sino-North Korean alliance. Israel-Lebanon conflict escalates as Hezbollah rejects truce. U.S. House passes Ukraine aid.</p>
+                                        </div>
                                     </td>
                                 </tr>
-
-                                <!-- News Items Loop -->
-                                <!-- Geopolitics -->
                                 <tr>
-                                    <td class="news-item-wrapper" style="padding: 0 0 15px 0;">
-                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="news-item-box" style="background-color: #f0f4f8; border: 1px solid #e2e8f0; border-radius: 8px;">
-                                            <tr>
-                                                <td style="padding: 20px;">
-                                                    <p style="margin: 0; font-size: 15px; color: #333333;"><strong style="color: #701a75;">Geopolitics:</strong> US-Iran tensions persist with ongoing exchanges, triggering high alert in MENA. EU focuses on Western Balkans enlargement. US warns China on data theft via job platforms.</p>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                    <td style="padding-bottom: 25px;">
+                                        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #2e1065; margin: 0 0 15px 0;">Global News</h2>
+                                        <div style="background-color: #ffffff; border-left: 4px solid #4c1d95; padding: 15px 20px; margin-bottom: 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+                                            <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #4a5568; margin: 0;">U.S. invests in coal, sanctions Cuba. Europe focuses on Ukraine specialist training and EU enlargement. China proposes nuclear-powered islands. Russia seeks stronger African economic ties.</p>
+                                        </div>
                                     </td>
                                 </tr>
-
-                                <!-- Global News -->
                                 <tr>
-                                    <td class="news-item-wrapper" style="padding: 0 0 15px 0;">
-                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="news-item-box" style="background-color: #f0f4f8; border: 1px solid #e2e8f0; border-radius: 8px;">
-                                            <tr>
-                                                <td style="padding: 20px;">
-                                                    <p style="margin: 0; font-size: 15px; color: #333333;"><strong style="color: #701a75;">Global News:</strong> Canada launches AI strategy, implements new border rules. EU delays bank capital reforms. US issues Middle East travel warnings. Japan hit by tropical storm.</p>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                    <td style="padding-bottom: 25px;">
+                                        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #2e1065; margin: 0 0 15px 0;">MENA</h2>
+                                        <div style="background-color: #ffffff; border-left: 4px solid #4c1d95; padding: 15px 20px; margin-bottom: 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+                                            <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #4a5568; margin: 0;">Israel-Lebanon conflict intensifies; Hezbollah rejects truce. Houthi readiness for escalation. U.S.-Iran peace deal prospects clouded. U.S. targets Iranian economic networks.</p>
+                                        </div>
                                     </td>
                                 </tr>
-
-                                <!-- MENA -->
                                 <tr>
-                                    <td class="news-item-wrapper" style="padding: 0 0 15px 0;">
-                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="news-item-box" style="background-color: #f0f4f8; border: 1px solid #e2e8f0; border-radius: 8px;">
-                                            <tr>
-                                                <td style="padding: 20px;">
-                                                    <p style="margin: 0; font-size: 15px; color: #333333;"><strong style="color: #701a75;">MENA:</strong> High tensions due to Israel-Hezbollah clashes and Iran's attacks. Saudi Arabia diversifies economy, strengthens oversight. UAE pursues independent foreign policy, invests heavily in AI infrastructure.</p>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                    <td style="padding-bottom: 25px;">
+                                        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #2e1065; margin: 0 0 15px 0;">Future Tech</h2>
+                                        <div style="background-color: #ffffff; border-left: 4px solid #4c1d95; padding: 15px 20px; margin-bottom: 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+                                            <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #4a5568; margin: 0;">China plans nuclear-powered floating islands. Nvidia sees robotics growth in South Korea. India-Japan collaborate on naval stealth tech. NASA ISS air leak alert.</p>
+                                        </div>
                                     </td>
                                 </tr>
-
-                                <!-- Future Tech -->
                                 <tr>
-                                    <td class="news-item-wrapper" style="padding: 0 0 15px 0;">
-                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="news-item-box" style="background-color: #f0f4f8; border: 1px solid #e2e8f0; border-radius: 8px;">
-                                            <tr>
-                                                <td style="padding: 20px;">
-                                                    <p style="margin: 0; font-size: 15px; color: #333333;"><strong style="color: #701a75;">Future Tech:</strong> AI risk of catastrophic outcomes flagged. Quantum computing advancements, with new Microsoft chip. NASA Artemis III progresses. Robotics innovation on display at conferences.</p>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                    <td style="padding-bottom: 25px;">
+                                        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #2e1065; margin: 0 0 15px 0;">Business</h2>
+                                        <div style="background-color: #ffffff; border-left: 4px solid #4c1d95; padding: 15px 20px; margin-bottom: 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+                                            <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #4a5568; margin: 0;">Nvidia identifies robotics as key growth sector. South Korea's labor minister urges tech firms to share profits. Visa appoints Shah Rukh Khan as India ambassador. U.S. sanctions target Iranian economic networks.</p>
+                                        </div>
                                     </td>
                                 </tr>
-
-                                <!-- Business -->
                                 <tr>
-                                    <td class="news-item-wrapper" style="padding: 0 0 15px 0;">
-                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="news-item-box" style="background-color: #f0f4f8; border: 1px solid #e2e8f0; border-radius: 8px;">
-                                            <tr>
-                                                <td style="padding: 20px;">
-                                                    <p style="margin: 0; font-size: 15px; color: #333333;"><strong style="color: #701a75;">Business:</strong> Big tech invests heavily in AI; AI is leading cause of tech layoffs. M&A activity increasing due to AI demand. Cybersecurity threats remain high. Global trade shifts towards resilience.</p>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                    <td style="padding-bottom: 25px;">
+                                        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #2e1065; margin: 0 0 15px 0;">Science</h2>
+                                        <div style="background-color: #ffffff; border-left: 4px solid #4c1d95; padding: 15px 20px; margin-bottom: 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+                                            <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #4a5568; margin: 0;">India-Japan collaborate on naval stealth technology. NASA issues ISS evacuation alert over air leak. Global growth downgrade influences R&D funding.</p>
+                                        </div>
                                     </td>
                                 </tr>
-
-                                <!-- Science -->
                                 <tr>
-                                    <td class="news-item-wrapper" style="padding: 0 0 15px 0;">
-                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="news-item-box" style="background-color: #f0f4f8; border: 1px solid #e2e8f0; border-radius: 8px;">
-                                            <tr>
-                                                <td style="padding: 20px;">
-                                                    <p style="margin: 0; font-size: 15px; color: #333333;"><strong style="color: #701a75;">Science:</strong> JWST measures distant black hole. Breakthroughs in gene therapy. New hydrogen production method. Climate change impacts on sports and weather are evident.</p>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                    <td style="padding-bottom: 25px;">
+                                        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #2e1065; margin: 0 0 15px 0;">Health</h2>
+                                        <div style="background-color: #ffffff; border-left: 4px solid #4c1d95; padding: 15px 20px; margin-bottom: 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+                                            <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #4a5568; margin: 0;">NASA issues ISS evacuation alert. Lebanon faces severe humanitarian crisis due to conflict. Telangana doctors protest transfer policies.</p>
+                                        </div>
                                     </td>
                                 </tr>
-
-                                <!-- Health -->
                                 <tr>
-                                    <td class="news-item-wrapper" style="padding: 0 0 15px 0;">
-                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="news-item-box" style="background-color: #f0f4f8; border: 1px solid #e2e8f0; border-radius: 8px;">
-                                            <tr>
-                                                <td style="padding: 20px;">
-                                                    <p style="margin: 0; font-size: 15px; color: #333333;"><strong style="color: #701a75;">Health:</strong> Ebola outbreak in DRC and Uganda remains critical. HIV prevention injectable rolled out in South Africa. Debates on vaccine hesitancy. Biosecurity concerns rise with AI.</p>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                    <td style="padding-bottom: 25px;">
+                                        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #2e1065; margin: 0 0 15px 0;">Security</h2>
+                                        <div style="background-color: #ffffff; border-left: 4px solid #4c1d95; padding: 15px 20px; margin-bottom: 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+                                            <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #4a5568; margin: 0;">Israel-Lebanon conflict escalates. Houthi readiness for escalation. U.S. Air Operations Center in Qatar damaged by Iran. UK warns of state-backed cyber-attacks.</p>
+                                        </div>
                                     </td>
                                 </tr>
-
-                                <!-- Security -->
                                 <tr>
-                                    <td class="news-item-wrapper" style="padding: 0 0 15px 0;">
-                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="news-item-box" style="background-color: #f0f4f8; border: 1px solid #e2e8f0; border-radius: 8px;">
-                                            <tr>
-                                                <td style="padding: 20px;">
-                                                    <p style="margin: 0; font-size: 15px; color: #333333;"><strong style="color: #701a75;">Security:</strong> Brazil criminal organizations designated as FTOs. US renewed Middle East travel warnings. Linux Kernel and Android flaws under active exploitation. Cyber warfare capabilities advancing.</p>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                    <td style="padding-bottom: 25px;">
+                                        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #2e1065; margin: 0 0 15px 0;">Climate</h2>
+                                        <div style="background-color: #ffffff; border-left: 4px solid #4c1d95; padding: 15px 20px; margin-bottom: 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+                                            <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #4a5568; margin: 0;">Oil crisis impacts global economy. India approves schemes for cleaner mobility, stabilizes ATF prices, and celebrates World Environment Day with a major seed ball initiative in Andhra Pradesh.</p>
+                                        </div>
                                     </td>
                                 </tr>
-
-                                <!-- Climate -->
                                 <tr>
-                                    <td class="news-item-wrapper" style="padding: 0 0 15px 0;">
-                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="news-item-box" style="background-color: #f0f4f8; border: 1px solid #e2e8f0; border-radius: 8px;">
-                                            <tr>
-                                                <td style="padding: 20px;">
-                                                    <p style="margin: 0; font-size: 15px; color: #333333;"><strong style="color: #701a75;">Climate:</strong> Oil market volatile, global inventories low. Renewable energy investments surge worldwide. Extreme weather alerts issued in US. World Environment Day focuses on climate action.</p>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                    <td style="padding-bottom: 25px;">
+                                        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #2e1065; margin: 0 0 15px 0;">Markets</h2>
+                                        <div style="background-color: #ffffff; border-left: 4px solid #4c1d95; padding: 15px 20px; margin-bottom: 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+                                            <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #4a5568; margin: 0;">Crude oil prices gained. Global equities face high volatility. RBI holds repo rate, impacting gold prices.</p>
+                                        </div>
                                     </td>
                                 </tr>
-
-                                <!-- Markets -->
                                 <tr>
-                                    <td class="news-item-wrapper" style="padding: 0 0 15px 0;">
-                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="news-item-box" style="background-color: #f0f4f8; border: 1px solid #e2e8f0; border-radius: 8px;">
-                                            <tr>
-                                                <td style="padding: 20px;">
-                                                    <p style="margin: 0; font-size: 15px; color: #333333;"><strong style="color: #701a75;">Markets:</strong> Crude oil remains high but expected to ease. US equities mixed. Chinese stocks declined. Central bank rate decisions upcoming.</p>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                    <td style="padding-bottom: 25px;">
+                                        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #2e1065; margin: 0 0 15px 0;">Mega Projects</h2>
+                                        <div style="background-color: #ffffff; border-left: 4px solid #4c1d95; padding: 15px 20px; margin-bottom: 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+                                            <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #4a5568; margin: 0;">China proposes nuclear-powered floating islands. Algeria builds Trans-Saharan Gas Pipeline section. India invests in infrastructure and renewable energy.</p>
+                                        </div>
                                     </td>
                                 </tr>
-
-                                <!-- Mega Projects -->
                                 <tr>
-                                    <td class="news-item-wrapper" style="padding: 0 0 15px 0;">
-                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="news-item-box" style="background-color: #f0f4f8; border: 1px solid #e2e8f0; border-radius: 8px;">
-                                            <tr>
-                                                <td style="padding: 20px;">
-                                                    <p style="margin: 0; font-size: 15px; color: #333333;"><strong style="color: #701a75;">Mega Projects:</strong> India's Dharavi redevelopment and urban projects. Global South infrastructure projects reshaping trade. North American digital infrastructure investments. Data center expansion globally.</p>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                    <td style="padding-bottom: 25px;">
+                                        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #2e1065; margin: 0 0 15px 0;">Migration</h2>
+                                        <div style="background-color: #ffffff; border-left: 4px solid #4c1d95; padding: 15px 20px; margin-bottom: 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+                                            <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #4a5568; margin: 0;">1,076 Indian nationals deported from U.S. Lebanon faces significant displacement crisis. FinCEN focuses on illicit activity related to migration.</p>
+                                        </div>
                                     </td>
                                 </tr>
-
-                                <!-- Migration -->
                                 <tr>
-                                    <td class="news-item-wrapper" style="padding: 0 0 15px 0;">
-                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="news-item-box" style="background-color: #f0f4f8; border: 1px solid #e2e8f0; border-radius: 8px;">
-                                            <tr>
-                                                <td style="padding: 20px;">
-                                                    <p style="margin: 0; font-size: 15px; color: #333333;"><strong style="color: #701a75;">Migration:</strong> World population at 8.3 billion. Canada tightens border policy. EU adopts stricter asylum rules. Refugee crises persist in Middle East and Africa.</p>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                    <td style="padding-bottom: 25px;">
+                                        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #2e1065; margin: 0 0 15px 0;">India National</h2>
+                                        <div style="background-color: #ffffff; border-left: 4px solid #4c1d95; padding: 15px 20px; margin-bottom: 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+                                            <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #4a5568; margin: 0;">Gold prices decline. World Environment Day celebrated. Cabinet approves schemes for old trucks/buses and ATF price stabilization. Monsoon reaches Kerala. India's GDP grew 7.7%.</p>
+                                        </div>
                                     </td>
                                 </tr>
-
-                                <!-- India National -->
                                 <tr>
-                                    <td class="news-item-wrapper" style="padding: 0 0 15px 0;">
-                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="news-item-box" style="background-color: #f0f4f8; border: 1px solid #e2e8f0; border-radius: 8px;">
-                                            <tr>
-                                                <td style="padding: 20px;">
-                                                    <p style="margin: 0; font-size: 15px; color: #333333;"><strong style="color: #701a75;">India National:</strong> Indian national killed in Kuwait airport attack. Delhi hotel fire claims 21 lives. Monsoon sets over Kerala. PM Modi to launch ₹22,655 crore development projects.</p>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                    <td style="padding-bottom: 25px;">
+                                        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #2e1065; margin: 0 0 15px 0;">Telangana</h2>
+                                        <div style="background-color: #ffffff; border-left: 4px solid #4c1d95; padding: 15px 20px; margin-bottom: 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+                                            <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #4a5568; margin: 0;">Doctors protest transfers, suspending OP services. Revised land rates implemented. FCI QR code tagging expansion. CM reviews Palamuru Project.</p>
+                                        </div>
                                     </td>
                                 </tr>
-
-                                <!-- Telangana -->
                                 <tr>
-                                    <td class="news-item-wrapper" style="padding: 0 0 15px 0;">
-                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="news-item-box" style="background-color: #f0f4f8; border: 1px solid #e2e8f0; border-radius: 8px;">
-                                            <tr>
-                                                <td style="padding: 20px;">
-                                                    <p style="margin: 0; font-size: 15px; color: #333333;"><strong style="color: #701a75;">Telangana:</strong> Property registration rates revised. Hydroponic ganja syndicate busted. "Vanchana Sabha" protest for jobs. Major fire in Ameerpet.</p>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                    <td style="padding-bottom: 25px;">
+                                        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #2e1065; margin: 0 0 15px 0;">Andhra Pradesh</h2>
+                                        <div style="background-color: #ffffff; border-left: 4px solid #4c1d95; padding: 15px 20px; margin-bottom: 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+                                            <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #4a5568; margin: 0;">Seed ball initiative launched on World Environment Day. Russian firms invited to invest in space ecosystem. CM highlights seafood sector opportunities. Rooftop solar rules clarified.</p>
+                                        </div>
                                     </td>
                                 </tr>
-
-                                <!-- Andhra Pradesh -->
                                 <tr>
-                                    <td class="news-item-wrapper" style="padding: 0 0 15px 0;">
-                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="news-item-box" style="background-color: #f0f4f8; border: 1px solid #e2e8f0; border-radius: 8px;">
-                                            <tr>
-                                                <td style="padding: 20px;">
-                                                    <p style="margin: 0; font-size: 15px; color: #333333;"><strong style="color: #701a75;">Andhra Pradesh:</strong> "Amaravati Eye" tourism project approved. Polavaram Left Main Canal sanction. DRI seizes ganja. Monsoon expected soon.</p>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                    <td style="padding-bottom: 25px;">
+                                        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #2e1065; margin: 0 0 15px 0;">MENA Strategy</h2>
+                                        <div style="background-color: #ffffff; border-left: 4px solid #4c1d95; padding: 15px 20px; margin-bottom: 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+                                            <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #4a5568; margin: 0;">Escalating Israel-Hezbollah conflict, U.S. sanctions target Iran, China advocates for Mideast peace, U.S. Air Operations Center damaged.</p>
+                                        </div>
                                     </td>
                                 </tr>
-
-                                <!-- MENA Strategy -->
                                 <tr>
-                                    <td class="news-item-wrapper" style="padding: 0 0 15px 0;">
-                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="news-item-box" style="background-color: #f0f4f8; border: 1px solid #e2e8f0; border-radius: 8px;">
-                                            <tr>
-                                                <td style="padding: 20px;">
-                                                    <p style="margin: 0; font-size: 15px; color: #333333;"><strong style="color: #701a75;">MENA Strategy:</strong> MENA economies focus on diversification and tech adoption. UAE heavily invests in AI infrastructure. Saudi Vision 2030 implementation continues.</p>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                    <td style="padding-bottom: 25px;">
+                                        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #2e1065; margin: 0 0 15px 0;">Sentiment</h2>
+                                        <div style="background-color: #ffffff; border-left: 4px solid #4c1d95; padding: 15px 20px; margin-bottom: 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+                                            <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #4a5568; margin: 0;">Public discontent over Telangana doctor transfers. Lebanese public critical of Hezbollah's actions. Online debates on global economic impacts.</p>
+                                        </div>
                                     </td>
                                 </tr>
-
-                                <!-- Sentiment -->
                                 <tr>
-                                    <td class="news-item-wrapper" style="padding: 0 0 15px 0;">
-                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="news-item-box" style="background-color: #f0f4f8; border: 1px solid #e2e8f0; border-radius: 8px;">
-                                            <tr>
-                                                <td style="padding: 20px;">
-                                                    <p style="margin: 0; font-size: 15px; color: #333333;"><strong style="color: #701a75;">Sentiment:</strong> Protests against healthcare cuts in US. Public pessimism on climate action. Social media trends towards human-led storytelling.</p>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                    <td style="padding-bottom: 25px;">
+                                        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #2e1065; margin: 0 0 15px 0;">Deep Analysis</h2>
+                                        <div style="background-color: #ffffff; border-left: 4px solid #4c1d95; padding: 15px 20px; margin-bottom: 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+                                            <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #4a5568; margin: 0;">Hezbollah's rejection of ceasefire escalates Israel-Lebanon conflict, driven by strategic objectives and regional power dynamics, threatening wider instability and global energy markets.</p>
+                                        </div>
                                     </td>
                                 </tr>
-
-                                <!-- Deep Analysis -->
                                 <tr>
-                                    <td class="news-item-wrapper" style="padding: 0 0 15px 0;">
-                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="news-item-box" style="background-color: #f0f4f8; border: 1px solid #e2e8f0; border-radius: 8px;">
-                                            <tr>
-                                                <td style="padding: 20px;">
-                                                    <p style="margin: 0; font-size: 15px; color: #333333;"><strong style="color: #701a75;">Deep Analysis:</strong> Middle East tensions and US travel advisories highlight ongoing conflict with Iran, rooted in geopolitical rivalries and past escalations, with significant long-term consequences for global stability and economy.</p>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                    <td style="padding-bottom: 25px;">
+                                        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #2e1065; margin: 0 0 15px 0;">History (Global)</h2>
+                                        <div style="background-color: #ffffff; border-left: 4px solid #4c1d95; padding: 15px 20px; margin-bottom: 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+                                            <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #4a5568; margin: 0;">Orient Express inaugural run (1883), Marshall Plan (1947), Six-Day War begins (1967), Robert F. Kennedy assassinated (1968), Suez Canal reopens (1975), AIDS first reported (1981).</p>
+                                        </div>
                                     </td>
                                 </tr>
-
-                                <!-- History (Global) -->
                                 <tr>
-                                    <td class="news-item-wrapper" style="padding: 0 0 15px 0;">
-                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="news-item-box" style="background-color: #f0f4f8; border: 1px solid #e2e8f0; border-radius: 8px;">
-                                            <tr>
-                                                <td style="padding: 20px;">
-                                                    <p style="margin: 0; font-size: 15px; color: #333333;"><strong style="color: #701a75;">History (Global):</strong> Orient Express first service (1883). Rome captured (1944). Elvis Presley's "Hound Dog" debut (1956). Robert F. Kennedy assassination (1968). Suez Canal reopens (1975). First AIDS report (1981).</p>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                    <td style="padding-bottom: 25px;">
+                                        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #2e1065; margin: 0 0 15px 0;">History (India)</h2>
+                                        <div style="background-color: #ffffff; border-left: 4px solid #4c1d95; padding: 15px 20px; margin-bottom: 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+                                            <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #4a5568; margin: 0;">Department of Environment established (1973), Operation Blue Star begins (1984), Sunita Williams' record spacewalk (2007), India launches IRNSS-1B (2014), GSLV-F05 launch (2017).</p>
+                                        </div>
                                     </td>
                                 </tr>
-
-                                <!-- History (India) -->
                                 <tr>
-                                    <td class="news-item-wrapper" style="padding: 0 0 15px 0;">
-                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="news-item-box" style="background-color: #f0f4f8; border: 1px solid #e2e8f0; border-radius: 8px;">
-                                            <tr>
-                                                <td style="padding: 20px;">
-                                                    <p style="margin: 0; font-size: 15px; color: #333333;"><strong style="color: #701a75;">History (India):</strong> Mountbatten Plan (1947). First nuclear test (1975). Operation Blue Star (1984). GSAT-2 launch (2003). Narendra Modi sworn in (2014).</p>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                    <td style="padding-bottom: 25px;">
+                                        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #2e1065; margin: 0 0 15px 0;">Week Review</h2>
+                                        <div style="background-color: #ffffff; border-left: 4px solid #4c1d95; padding: 15px 20px; margin-bottom: 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+                                            <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #4a5568; margin: 0;">Great Power competition and Mideast conflict escalation dominated. Global economic forecasts downgraded. India saw key policy approvals and state-level initiatives.</p>
+                                        </div>
                                     </td>
                                 </tr>
-
-                                <!-- Week Review -->
                                 <tr>
-                                    <td class="news-item-wrapper" style="padding: 0 0 15px 0;">
-                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="news-item-box" style="background-color: #f0f4f8; border: 1px solid #e2e8f0; border-radius: 8px;">
-                                            <tr>
-                                                <td style="padding: 20px;">
-                                                    <p style="margin: 0; font-size: 15px; color: #333333;"><strong style="color: #701a75;">Week Review:</strong> US-Iran hostilities, OECD lower growth forecast, tech layoffs and AI investments, Ebola outbreak, Canada's AI strategy.</p>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                    <td style="padding-bottom: 25px;">
+                                        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #2e1065; margin: 0 0 15px 0;">Month Review</h2>
+                                        <div style="background-color: #ffffff; border-left: 4px solid #4c1d95; padding: 15px 20px; margin-bottom: 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+                                            <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #4a5568; margin: 0;">June began with intensified geopolitical tensions, particularly in the Middle East and between major global powers, alongside significant economic and environmental initiatives in India.</p>
+                                        </div>
                                     </td>
                                 </tr>
-
-                                <!-- Month Review -->
                                 <tr>
-                                    <td class="news-item-wrapper" style="padding: 0 0 15px 0;">
-                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="news-item-box" style="background-color: #f0f4f8; border: 1px solid #e2e8f0; border-radius: 8px;">
-                                            <tr>
-                                                <td style="padding: 20px;">
-                                                    <p style="margin: 0; font-size: 15px; color: #333333;"><strong style="color: #701a75;">Month Review:</strong> Global economic volatility, AI's rising impact on tech/security, critical Ebola outbreak, tightening migration policies, advancing infrastructure.</p>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                    <td style="padding-bottom: 25px;">
+                                        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #2e1065; margin: 0 0 15px 0;">Gold</h2>
+                                        <div style="background-color: #ffffff; border-left: 4px solid #4c1d95; padding: 15px 20px; margin-bottom: 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+                                            <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #4a5568; margin: 0;">Hyderabad 24 Carat: ₹1,55,730 (fell by ₹380); 22 Carat: ₹1,42,750 (fell by ₹350). Reason: weakness in global markets and RBI caution on inflation.</p>
+                                        </div>
                                     </td>
                                 </tr>
-
-                                <!-- Gold -->
                                 <tr>
-                                    <td class="news-item-wrapper" style="padding: 0 0 15px 0;">
-                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="news-item-box" style="background-color: #f0f4f8; border: 1px solid #e2e8f0; border-radius: 8px;">
-                                            <tr>
-                                                <td style="padding: 20px;">
-                                                    <p style="margin: 0; font-size: 15px; color: #333333;"><strong style="color: #701a75;">Gold:</strong> 24 Carat: ₹156,110 (down ₹110); 22 Carat: ₹143,100 (down ₹100). Physical rates dropped due to hawkish macro scenario, MCX gold rose due to international COMEX bullion uptrend.</p>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                    <td style="padding-bottom: 25px;">
+                                        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #2e1065; margin: 0 0 15px 0;">Indicators</h2>
+                                        <div style="background-color: #ffffff; border-left: 4px solid #4c1d95; padding: 15px 20px; margin-bottom: 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+                                            <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #4a5568; margin: 0;">Crude oil gained. USD index impacted by sanctions. USD/JPY fell. Equities volatile. Inflation concerns noted by RBI and in San Marino.</p>
+                                        </div>
                                     </td>
                                 </tr>
-
-                                <!-- Indicators -->
                                 <tr>
-                                    <td class="news-item-wrapper" style="padding: 0 0 15px 0;">
-                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="news-item-box" style="background-color: #f0f4f8; border: 1px solid #e2e8f0; border-radius: 8px;">
-                                            <tr>
-                                                <td style="padding: 20px;">
-                                                    <p style="margin: 0; font-size: 15px; color: #333333;"><strong style="color: #701a75;">Indicators:</strong> Crude oil volatile but higher. US equities mixed, Chinese stocks down. Inflation forecasts raised.</p>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                    <td style="padding-bottom: 25px;">
+                                        <h2 style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: #2e1065; margin: 0 0 15px 0;">Insight</h2>
+                                        <div style="background-color: #ffffff; border-left: 4px solid #4c1d95; padding: 15px 20px; margin-bottom: 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+                                            <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #4a5568; margin: 0;">Underreported trend: global strategic shift towards specialized and autonomous military capabilities (e.g., FPV drones, specialist training), alongside China's nuclear-powered floating islands, hinting at profound changes in future warfare and maritime power.</p>
+                                        </div>
                                     </td>
                                 </tr>
-
-                                <!-- Insight -->
-                                <tr>
-                                    <td class="news-item-wrapper" style="padding: 0 0 15px 0;">
-                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="news-item-box" style="background-color: #f0f4f8; border: 1px solid #e2e8f0; border-radius: 8px;">
-                                            <tr>
-                                                <td style="padding: 20px;">
-                                                    <p style="margin: 0; font-size: 15px; color: #333333;"><strong style="color: #701a75;">Insight:</strong> AI's dual impact on business (investment vs. layoffs) and national security (innovation vs. risk) is a critical underreported trend demanding comprehensive strategic planning.</p>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <!-- End News Items Loop -->
-
-                                <tr><td style="height: 20px; line-height: 20px;">&nbsp;</td></tr> <!-- Spacer before button -->
-
-                                <!-- Button Section -->
-                                <tr>
-                                    <td align="center" style="padding: 20px 0;">
-                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: 0 auto;">
-                                            <tr>
-                                                <td style="border-radius: 30px; background-color: #701a75;">
-                                                    <a href="https://github.com/ravikiranoffl/TGCA/blob/main/2026/2026-06-05.md" target="_blank" style="font-size: 16px; font-family: 'Inter', sans-serif; color: #ffffff; text-decoration: none; padding: 15px 30px; border-radius: 30px; border: 1px solid #701a75; display: inline-block; font-weight: 700;">
-                                                        View Detailed Global Report
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr><td style="height: 30px; line-height: 30px;">&nbsp;</td></tr> <!-- Spacer after button -->
-
                             </table>
-                        </td>
-                    </tr>
-                    <!-- Footer -->
-                    <tr>
-                        <td align="center" style="padding: 20px; font-size: 12px; color: #a0aec0; background-color: #edf2f7; border-top: 1px solid #e2e8f0;">
-                            <p style="margin: 0;">&copy; 2026 THE GEMINI CHRONICLE AGENT. All rights reserved.</p>
-                            <p style="margin: 5px 0 0;">Stay informed, stay secure.</p>
-                        </td>
-                    </tr>
 
+                            <!-- Button Section -->
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
+                                <tr>
+                                    <td align="center" style="padding-top: 20px; padding-bottom: 40px;">
+                                        <a href="https://github.com/ravikiranoffl/TGCA/blob/main/2026/2026-06-05.md" target="_blank" style="font-family: 'Inter', sans-serif; display: inline-block; background-color: #4c1d95; color: #ffffff; font-size: 16px; font-weight: 600; text-decoration: none; padding: 15px 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                                            View Detailed Global Report
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </td>
+                    </tr>
                 </table>
-                <!-- End Main Content Container -->
+                <!-- End Main Email Container -->
             </td>
         </tr>
     </table>
