@@ -3,453 +3,355 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>The Gemini Chronicle Agent - Daily Briefing</title>
-    <!-- Google Font Import (may be stripped by some email clients, but provides a fallback to sans-serif) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style type="text/css">
-        /* Client-specific Styles */
-        body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
-        table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
-        img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
-        table { border-collapse: collapse !important; }
-        a { text-decoration: none; }
-
-        /* General Styles */
-        body { margin: 0; padding: 0; }
-        body, td, p, a, li { font-family: 'Inter', sans-serif; } /* Fallback to sans-serif if Inter not loaded */
-
-        /* Animation for Title Card (will only work in email clients supporting @keyframes) */
-        .animated-header {
-            animation: gradientShift 15s ease infinite;
+    <title>THE GEMINI CHRONICLE AGENT</title>
+    <style>
+        /* General Reset & Email Client Compatibility */
+        body, table, td, a {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            font-family: 'Inter', sans-serif; /* Global font-family with fallback */
         }
+        table, td {
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+        img {
+            -ms-interpolation-mode: bicubic;
+        }
+        a {
+            text-decoration: none;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f1f5f9; /* Light gray background for the body */
+        }
+        /* Animation for the header */
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+        .animated-header {
+            animation: gradientShift 10s ease infinite;
+        }
 
-        /* Responsive Styles */
-        @media screen and (max-width: 600px) {
-            .container {
-                width: 100% !important;
-                max-width: 100% !important;
-            }
-            .padding-content {
-                padding: 20px !important;
-            }
-            h1 {
-                font-size: 30px !important;
-            }
-            h3 {
-                font-size: 18px !important;
-            }
-            .button {
-                padding: 12px 25px !important;
-                font-size: 16px !important;
-            }
+        /* Specific styles for better email client rendering */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden; /* To contain border-radius */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .content-block {
+            padding: 20px 25px;
+            line-height: 1.6;
+            color: #334155; /* slate-700 */
+        }
+        .category-box {
+            background-color: #f8fafc; /* slate-50 */
+            border: 1px solid #e2e8f0; /* slate-200 */
+            border-radius: 6px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+        }
+        .category-title {
+            font-size: 18px;
+            color: #0f172a; /* slate-900 */
+            margin-bottom: 8px;
+            display: block; /* Ensures it acts as a block */
+            font-weight: bold;
+        }
+        .category-items {
+            font-size: 15px;
+            color: #334155; /* slate-700 */
+        }
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            color: #ffffff;
+            background-color: #075985; /* Specific blue from gradient */
+            text-decoration: none;
+            mso-padding-alt: 0; /* Outlook fix */
+        }
+        .button span {
+            mso-text-raise: 15px; /* Outlook fix */
         }
     </style>
 </head>
-<body style="margin: 0; padding: 0; background-color: #f0f4f8; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; word-break: break-word;">
-    <center style="width: 100%;">
-        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; background-color: #f0f4f8;">
-            <tr>
-                <td align="center" style="padding: 20px 0;">
-                    <table border="0" cellpadding="0" cellspacing="0" width="600" class="container" style="width:600px; max-width:600px; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+<body style="margin: 0; padding: 0; font-family: 'Inter', sans-serif; background-color: #f1f5f9;">
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; width: 100%; table-layout: fixed;">
+        <tr>
+            <td align="center" style="padding: 20px 0;">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);" class="container">
+                    <tr>
                         <!-- Title Card Header Block -->
-                        <tr>
-                            <td>
-                                <div class="animated-header" style="background: linear-gradient(-45deg, #022c22, #064e3b, #0f766e, #022c22); background-size: 200% 200%; color: white; text-align: center; padding: 45px 20px; border-bottom: 4px solid #cbd5e1;">
-                                    <h1 style="margin: 0; font-size: 38px; line-height: 1.2; font-weight: 700;">THE GEMINI CHRONICLE AGENT</h1>
-                                    <p style="margin: 10px 0 0; font-size: 18px; opacity: 0.9;">Thursday, 20 August 2026</p>
-                                </div>
-                            </td>
-                        </tr>
+                        <td align="center" class="animated-header" style="background: linear-gradient(-45deg, #0f172a, #1e293b, #075985, #0f172a); background-size: 200% 200%; color: white; text-align: center; padding: 45px 20px; border-bottom: 4px solid #cbd5e1; font-family: 'Inter', sans-serif;">
+                            <h1 style="margin: 0; font-size: 32px; line-height: 1.2; font-weight: 700;">THE GEMINI CHRONICLE AGENT</h1>
+                            <p style="margin: 10px 0 0; font-size: 18px; line-height: 1.5; font-weight: 400;">Thursday, 20 August 2026</p>
+                        </td>
+                    </tr>
 
-                        <!-- News Summary Section -->
-                        <tr>
-                            <td class="padding-content" style="padding: 30px 40px;">
-                                <!-- Geopolitics -->
-                                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 25px; padding: 25px;">
-                                    <h3 style="color: #064e3b; margin-top: 0; margin-bottom: 15px; font-size: 22px; font-weight: 600;">Geopolitics</h3>
-                                    <ul style="list-style-type: none; padding: 0; margin: 0;">
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> The "Iran war" is significantly impacting global economy and increasing inflation.
-                                        </li>
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Diplomatic efforts are ongoing, but tensions remain high, especially in the Strait of Hormuz.
-                                        </li>
-                                        <li style="margin-bottom: 0; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> The UN Security Council is addressing global instability.
-                                        </li>
-                                    </ul>
-                                </div>
+                    <tr>
+                        <td style="padding: 25px; font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #334155;" class="content-block">
+                            <!-- News Summary Points -->
 
-                                <!-- Global News -->
-                                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 25px; padding: 25px;">
-                                    <h3 style="color: #064e3b; margin-top: 0; margin-bottom: 15px; font-size: 22px; font-weight: 600;">Global News</h3>
-                                    <ul style="list-style-type: none; padding: 0; margin: 0;">
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> US tariffs on Canadian goods were paused, with ongoing negotiations.
-                                        </li>
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Europe is experiencing severe heatwaves and new restrictions on Ukrainian temporary protection.
-                                        </li>
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> China completed a reusable rocket landing and is militarizing a South China Sea reef.
-                                        </li>
-                                        <li style="margin-bottom: 0; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Africa faces an accelerating Ebola outbreak and ongoing cholera epidemics.
-                                        </li>
-                                    </ul>
-                                </div>
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="margin-bottom: 15px;">
+                                <tr>
+                                    <td class="category-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px 20px;">
+                                        <span class="category-title" style="font-size: 18px; color: #0f172a; margin-bottom: 8px; display: block; font-weight: bold;">Geopolitics:</span>
+                                        <span class="category-items" style="font-size: 15px; color: #334155;">US-Canada tariff talks progress, China jails Evergrande founder, and US-Iran tensions escalate with new sanctions.</span>
+                                    </td>
+                                </tr>
+                            </table>
 
-                                <!-- MENA -->
-                                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 25px; padding: 25px;">
-                                    <h3 style="color: #064e3b; margin-top: 0; margin-bottom: 15px; font-size: 22px; font-weight: 600;">MENA</h3>
-                                    <ul style="list-style-type: none; padding: 0; margin: 0;">
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> UAE suspended trade with Iran following alleged missile launches, escalating regional tensions.
-                                        </li>
-                                        <li style="margin-bottom: 0; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Saudi Arabia's Vision 2030 progresses, focusing on economic diversification and tech investment.
-                                        </li>
-                                    </ul>
-                                </div>
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="margin-bottom: 15px;">
+                                <tr>
+                                    <td class="category-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px 20px;">
+                                        <span class="category-title" style="font-size: 18px; color: #0f172a; margin-bottom: 8px; display: block; font-weight: bold;">Global News:</span>
+                                        <span class="category-items" style="font-size: 15px; color: #334155;">Russia attacks Kyiv, Europe faces megafire warnings, and North Korea launches missiles. Indonesia suffers earthquake displacement and haze risk.</span>
+                                    </td>
+                                </tr>
+                            </table>
 
-                                <!-- Future Tech -->
-                                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 25px; padding: 25px;">
-                                    <h3 style="color: #064e3b; margin-top: 0; margin-bottom: 15px; font-size: 22px; font-weight: 600;">Future Tech</h3>
-                                    <ul style="list-style-type: none; padding: 0; margin: 0;">
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> China achieved a key reusable rocket milestone, and SpaceX recovered its Starship.
-                                        </li>
-                                        <li style="margin-bottom: 0; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> AI developments include new EU transparency rules and OpenAI slowing advanced AI development after an autonomous cyberattack.
-                                        </li>
-                                    </ul>
-                                </div>
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="margin-bottom: 15px;">
+                                <tr>
+                                    <td class="category-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px 20px;">
+                                        <span class="category-title" style="font-size: 18px; color: #0f172a; margin-bottom: 8px; display: block; font-weight: bold;">MENA:</span>
+                                        <span class="category-items" style="font-size: 15px; color: #334155;">US announces crushing economic sanctions on Iran, UAE imposes embargo, and EU calls for diplomacy amidst Hormuz tensions.</span>
+                                    </td>
+                                </tr>
+                            </table>
 
-                                <!-- Business -->
-                                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 25px; padding: 25px;">
-                                    <h3 style="color: #064e3b; margin-top: 0; margin-bottom: 15px; font-size: 22px; font-weight: 600;">Business</h3>
-                                    <ul style="list-style-type: none; padding: 0; margin: 0;">
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Cybersecurity threats, including an actively exploited Windows zero-day by the Lazarus Group, are prevalent.
-                                        </li>
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Tech layoffs are surging, driven by AI adoption.
-                                        </li>
-                                        <li style="margin-bottom: 0; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> M&A activity remains strong, with a focus on AI and cybersecurity.
-                                        </li>
-                                    </ul>
-                                </div>
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="margin-bottom: 15px;">
+                                <tr>
+                                    <td class="category-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px 20px;">
+                                        <span class="category-title" style="font-size: 18px; color: #0f172a; margin-bottom: 8px; display: block; font-weight: bold;">Future Tech:</span>
+                                        <span class="category-items" style="font-size: 15px; color: #334155;">China opposes US pressure on AI ecosystems, EU boosts sovereign AI infrastructure, and Japan plans hypersonic missiles.</span>
+                                    </td>
+                                </tr>
+                            </table>
 
-                                <!-- Science -->
-                                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 25px; padding: 25px;">
-                                    <h3 style="color: #064e3b; margin-top: 0; margin-bottom: 15px; font-size: 22px; font-weight: 600;">Science</h3>
-                                    <ul style="list-style-type: none; padding: 0; margin: 0;">
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> A "black hole star" was discovered, and new evidence emerged on proton structure.
-                                        </li>
-                                        <li style="margin-bottom: 0; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Medical advancements include a new melanoma therapy and research into infectious disease immunotherapies.
-                                        </li>
-                                    </ul>
-                                </div>
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="margin-bottom: 15px;">
+                                <tr>
+                                    <td class="category-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px 20px;">
+                                        <span class="category-title" style="font-size: 18px; color: #0f172a; margin-bottom: 8px; display: block; font-weight: bold;">Business:</span>
+                                        <span class="category-items" style="font-size: 15px; color: #334155;">China urges US to drop drone tariffs, Evergrande founder jailed, and Canada investigates Chinese paperboard dumping.</span>
+                                    </td>
+                                </tr>
+                            </table>
 
-                                <!-- Health -->
-                                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 25px; padding: 25px;">
-                                    <h3 style="color: #064e3b; margin-top: 0; margin-bottom: 15px; font-size: 22px; font-weight: 600;">Health</h3>
-                                    <ul style="list-style-type: none; padding: 0; margin: 0;">
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> The Ebola outbreak in DRC is the deadliest in the country's history.
-                                        </li>
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Widespread cholera epidemics persist in Africa.
-                                        </li>
-                                        <li style="margin-bottom: 0; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> US vaccine policy is undergoing a significant overhaul.
-                                        </li>
-                                    </ul>
-                                </div>
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="margin-bottom: 15px;">
+                                <tr>
+                                    <td class="category-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px 20px;">
+                                        <span class="category-title" style="font-size: 18px; color: #0f172a; margin-bottom: 8px; display: block; font-weight: bold;">Science:</span>
+                                        <span class="category-items" style="font-size: 15px; color: #334155;">Researchers warn of European "megafires," and ASEAN collaborates with Brazil on climate science.</span>
+                                    </td>
+                                </tr>
+                            </table>
 
-                                <!-- Security -->
-                                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 25px; padding: 25px;">
-                                    <h3 style="color: #064e3b; margin-top: 0; margin-bottom: 15px; font-size: 22px; font-weight: 600;">Security</h3>
-                                    <ul style="list-style-type: none; padding: 0; margin: 0;">
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Cyber threats from state-sponsored groups and ransomware are escalating.
-                                        </li>
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Iran is reportedly considering attacks on US military targets in Europe.
-                                        </li>
-                                        <li style="margin-bottom: 0; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Terrorism remains a significant threat in Pakistan.
-                                        </li>
-                                    </ul>
-                                </div>
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="margin-bottom: 15px;">
+                                <tr>
+                                    <td class="category-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px 20px;">
+                                        <span class="category-title" style="font-size: 18px; color: #0f172a; margin-bottom: 8px; display: block; font-weight: bold;">Health:</span>
+                                        <span class="category-items" style="font-size: 15px; color: #334155;">DR Congo receives Ebola vaccine doses amidst spreading outbreak, and Indonesia faces regional haze threat.</span>
+                                    </td>
+                                </tr>
+                            </table>
 
-                                <!-- Climate -->
-                                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 25px; padding: 25px;">
-                                    <h3 style="color: #064e3b; margin-top: 0; margin-bottom: 15px; font-size: 22px; font-weight: 600;">Climate</h3>
-                                    <ul style="list-style-type: none; padding: 0; margin: 0;">
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> A "super El Niño" is intensifying, foreboding extreme global weather.
-                                        </li>
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Record heatwaves continue in Europe.
-                                        </li>
-                                        <li style="margin-bottom: 0; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Investments in renewable energy are reaching new highs.
-                                        </li>
-                                    </ul>
-                                </div>
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="margin-bottom: 15px;">
+                                <tr>
+                                    <td class="category-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px 20px;">
+                                        <span class="category-title" style="font-size: 18px; color: #0f172a; margin-bottom: 8px; display: block; font-weight: bold;">Security:</span>
+                                        <span class="category-items" style="font-size: 15px; color: #334155;">Russian strikes hit Kyiv, Iran threatens US bases in Europe, and Japan develops hypersonic missiles.</span>
+                                    </td>
+                                </tr>
+                            </table>
 
-                                <!-- Markets -->
-                                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 25px; padding: 25px;">
-                                    <h3 style="color: #064e3b; margin-top: 0; margin-bottom: 15px; font-size: 22px; font-weight: 600;">Markets</h3>
-                                    <ul style="list-style-type: none; padding: 0; margin: 0;">
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Crude oil prices are elevated due to Middle East tensions.
-                                        </li>
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> The US Dollar Index declined, boosting gold speculation.
-                                        </li>
-                                        <li style="margin-bottom: 0; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Global equities show mixed performance.
-                                        </li>
-                                    </ul>
-                                </div>
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="margin-bottom: 15px;">
+                                <tr>
+                                    <td class="category-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px 20px;">
+                                        <span class="category-title" style="font-size: 18px; color: #0f172a; margin-bottom: 8px; display: block; font-weight: bold;">Climate:</span>
+                                        <span class="category-items" style="font-size: 15px; color: #334155;">Europe reels from wildfires, Indonesia's fire hotspots surge, and Japan battles urban flooding.</span>
+                                    </td>
+                                </tr>
+                            </table>
 
-                                <!-- Mega Projects -->
-                                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 25px; padding: 25px;">
-                                    <h3 style="color: #064e3b; margin-top: 0; margin-bottom: 15px; font-size: 22px; font-weight: 600;">Mega Projects</h3>
-                                    <ul style="list-style-type: none; padding: 0; margin: 0;">
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> China is advancing digital infrastructure with AI data centers.
-                                        </li>
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> India is transforming its infrastructure, particularly in railways.
-                                        </li>
-                                        <li style="margin-bottom: 0; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Charlotte is deploying its first smart city kiosks.
-                                        </li>
-                                    </ul>
-                                </div>
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="margin-bottom: 15px;">
+                                <tr>
+                                    <td class="category-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px 20px;">
+                                        <span class="category-title" style="font-size: 18px; color: #0f172a; margin-bottom: 8px; display: block; font-weight: bold;">Markets:</span>
+                                        <span class="category-items" style="font-size: 15px; color: #334155;">Crude oil prices rise, US Dollar weakens, and global equities show mixed performance. Central banks address bond jitters.</span>
+                                    </td>
+                                </tr>
+                            </table>
 
-                                <!-- Migration -->
-                                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 25px; padding: 25px;">
-                                    <h3 style="color: #064e3b; margin-top: 0; margin-bottom: 15px; font-size: 22px; font-weight: 600;">Migration</h3>
-                                    <ul style="list-style-type: none; padding: 0; margin: 0;">
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Switzerland is tightening temporary protection rules for Ukrainian military conscripts.
-                                        </li>
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Liberia is accepting US deportees.
-                                        </li>
-                                        <li style="margin-bottom: 0; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> US refugee admissions are at a record low.
-                                        </li>
-                                    </ul>
-                                </div>
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="margin-bottom: 15px;">
+                                <tr>
+                                    <td class="category-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px 20px;">
+                                        <span class="category-title" style="font-size: 18px; color: #0f172a; margin-bottom: 8px; display: block; font-weight: bold;">Mega Projects:</span>
+                                        <span class="category-items" style="font-size: 15px; color: #334155;">EU approves data center joint venture in Spain, and Andhra Pradesh fast-tracks road development.</span>
+                                    </td>
+                                </tr>
+                            </table>
 
-                                <!-- India National -->
-                                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 25px; padding: 25px;">
-                                    <h3 style="color: #064e3b; margin-top: 0; margin-bottom: 15px; font-size: 22px; font-weight: 600;">India National</h3>
-                                    <ul style="list-style-type: none; padding: 0; margin: 0;">
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> A hotel fire in Kolkata killed nine.
-                                        </li>
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Defence Minister Rajnath Singh is meeting his Japanese counterpart today.
-                                        </li>
-                                        <li style="margin-bottom: 0; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> India began building a super-speciality hospital in the West Bank.
-                                        </li>
-                                    </ul>
-                                </div>
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="margin-bottom: 15px;">
+                                <tr>
+                                    <td class="category-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px 20px;">
+                                        <span class="category-title" style="font-size: 18px; color: #0f172a; margin-bottom: 8px; display: block; font-weight: bold;">Migration:</span>
+                                        <span class="category-items" style="font-size: 15px; color: #334155;">Denmark pushes for stronger EU borders, and EU issues new guidelines for Ukrainian protection.</span>
+                                    </td>
+                                </tr>
+                            </table>
 
-                                <!-- Telangana -->
-                                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 25px; padding: 25px;">
-                                    <h3 style="color: #064e3b; margin-top: 0; margin-bottom: 15px; font-size: 22px; font-weight: 600;">Telangana</h3>
-                                    <ul style="list-style-type: none; padding: 0; margin: 0;">
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> IMD forecast thunderstorms for 13 districts.
-                                        </li>
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Government is fast-tracking property registrations.
-                                        </li>
-                                        <li style="margin-bottom: 0; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> CWC urged education system reforms.
-                                        </li>
-                                    </ul>
-                                </div>
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="margin-bottom: 15px;">
+                                <tr>
+                                    <td class="category-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px 20px;">
+                                        <span class="category-title" style="font-size: 18px; color: #0f172a; margin-bottom: 8px; display: block; font-weight: bold;">India National:</span>
+                                        <span class="category-items" style="font-size: 15px; color: #334155;">Home Minister chairs Southern Zonal Council, Supreme Court to rule on 'industry' scope, and India wins cricket Test.</span>
+                                    </td>
+                                </tr>
+                            </table>
 
-                                <!-- Andhra Pradesh -->
-                                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 25px; padding: 25px;">
-                                    <h3 style="color: #064e3b; margin-top: 0; margin-bottom: 15px; font-size: 22px; font-weight: 600;">Andhra Pradesh</h3>
-                                    <ul style="list-style-type: none; padding: 0; margin: 0;">
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> CM Naidu to inaugurate Veligonda project.
-                                        </li>
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Allegations of irregularities in APPSC exams.
-                                        </li>
-                                        <li style="margin-bottom: 0; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Southern Zonal Council meeting today.
-                                        </li>
-                                    </ul>
-                                </div>
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="margin-bottom: 15px;">
+                                <tr>
+                                    <td class="category-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px 20px;">
+                                        <span class="category-title" style="font-size: 18px; color: #0f172a; margin-bottom: 8px; display: block; font-weight: bold;">Telangana:</span>
+                                        <span class="category-items" style="font-size: 15px; color: #334155;">CM Reddy tours UK/US, state faces revenue/fiscal deficit, and below-normal rainfall predicted.</span>
+                                    </td>
+                                </tr>
+                            </table>
 
-                                <!-- MENA Strategy -->
-                                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 25px; padding: 25px;">
-                                    <h3 style="color: #064e3b; margin-top: 0; margin-bottom: 15px; font-size: 22px; font-weight: 600;">MENA Strategy</h3>
-                                    <ul style="list-style-type: none; padding: 0; margin: 0;">
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> MENA economies face contraction in 2026 due to Strait of Hormuz disruptions but anticipate a rebound in 2027.
-                                        </li>
-                                        <li style="margin-bottom: 0; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Saudi Arabia and UAE are heavily investing in AI and digital transformation.
-                                        </li>
-                                    </ul>
-                                </div>
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="margin-bottom: 15px;">
+                                <tr>
+                                    <td class="category-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px 20px;">
+                                        <span class="category-title" style="font-size: 18px; color: #0f172a; margin-bottom: 8px; display: block; font-weight: bold;">Andhra Pradesh:</span>
+                                        <span class="category-items" style="font-size: 15px; color: #334155;">Expediting Amaravati roads, CM Naidu pushes for local polls, and proposes BC reservations.</span>
+                                    </td>
+                                </tr>
+                            </table>
 
-                                <!-- Sentiment -->
-                                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 25px; padding: 25px;">
-                                    <h3 style="color: #064e3b; margin-top: 0; margin-bottom: 15px; font-size: 22px; font-weight: 600;">Sentiment</h3>
-                                    <ul style="list-style-type: none; padding: 0; margin: 0;">
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Social media is a battleground for migration misinformation in Europe.
-                                        </li>
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Protests against corruption continue in Albania.
-                                        </li>
-                                        <li style="margin-bottom: 0; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Philippines debates social media curbs after a school shooting.
-                                        </li>
-                                    </ul>
-                                </div>
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="margin-bottom: 15px;">
+                                <tr>
+                                    <td class="category-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px 20px;">
+                                        <span class="category-title" style="font-size: 18px; color: #0f172a; margin-bottom: 8px; display: block; font-weight: bold;">MENA Strategy:</span>
+                                        <span class="category-items" style="font-size: 15px; color: #334155;">US economic pressure on Iran intensifies; Oman advocates for regional peace.</span>
+                                    </td>
+                                </tr>
+                            </table>
 
-                                <!-- Deep Analysis -->
-                                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 25px; padding: 25px;">
-                                    <h3 style="color: #064e3b; margin-top: 0; margin-bottom: 15px; font-size: 22px; font-weight: 600;">Deep Analysis</h3>
-                                    <p style="margin: 0; padding: 0; line-height: 1.6; font-size: 15px; color: #333333;">Escalating tensions between the UAE, Iran, and the US, including alleged missile launches and trade suspensions, are creating significant geopolitical and economic risks globally, especially concerning oil supplies in the Strait of Hormuz.</p>
-                                </div>
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="margin-bottom: 15px;">
+                                <tr>
+                                    <td class="category-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px 20px;">
+                                        <span class="category-title" style="font-size: 18px; color: #0f172a; margin-bottom: 8px; display: block; font-weight: bold;">Sentiment:</span>
+                                        <span class="category-items" style="font-size: 15px; color: #334155;">Canadian public sentiment divided on US trade concessions; global online discourse ongoing on conflicts.</span>
+                                    </td>
+                                </tr>
+                            </table>
 
-                                <!-- History (Global) -->
-                                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 25px; padding: 25px;">
-                                    <h3 style="color: #064e3b; margin-top: 0; margin-bottom: 15px; font-size: 22px; font-weight: 600;">History (Global)</h3>
-                                    <ul style="list-style-type: none; padding: 0; margin: 0;">
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> On this day in 1866, the American Civil War formally ended.
-                                        </li>
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> In 1968, the Soviet Union invaded Czechoslovakia.
-                                        </li>
-                                        <li style="margin-bottom: 0; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> NASA launched Voyager 2 in 1977.
-                                        </li>
-                                    </ul>
-                                </div>
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="margin-bottom: 15px;">
+                                <tr>
+                                    <td class="category-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px 20px;">
+                                        <span class="category-title" style="font-size: 18px; color: #0f172a; margin-bottom: 8px; display: block; font-weight: bold;">Deep Analysis:</span>
+                                        <span class="category-items" style="font-size: 15px; color: #334155;">Evergrande founder Hui Ka Yan sentenced to life for financial fraud, signaling China's crackdown on real estate debt and corporate malfeasance.</span>
+                                    </td>
+                                </tr>
+                            </table>
 
-                                <!-- History (India) -->
-                                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 25px; padding: 25px;">
-                                    <h3 style="color: #064e3b; margin-top: 0; margin-bottom: 15px; font-size: 22px; font-weight: 600;">History (India)</h3>
-                                    <ul style="list-style-type: none; padding: 0; margin: 0;">
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> August 20 marks the birth anniversary of former Prime Minister Rajiv Gandhi (Sadbhavana Diwas).
-                                        </li>
-                                        <li style="margin-bottom: 0; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> The inaugural gathering of Brahmo Samaj in 1828.
-                                        </li>
-                                    </ul>
-                                </div>
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="margin-bottom: 15px;">
+                                <tr>
+                                    <td class="category-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px 20px;">
+                                        <span class="category-title" style="font-size: 18px; color: #0f172a; margin-bottom: 8px; display: block; font-weight: bold;">History (Global):</span>
+                                        <span class="category-items" style="font-size: 15px; color: #334155;">Events include German occupation of Brussels (1914) and Soviet invasion of Czechoslovakia (1968).</span>
+                                    </td>
+                                </tr>
+                            </table>
 
-                                <!-- Week Review -->
-                                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 25px; padding: 25px;">
-                                    <h3 style="color: #064e3b; margin-top: 0; margin-bottom: 15px; font-size: 22px; font-weight: 600;">Week Review</h3>
-                                    <ul style="list-style-type: none; padding: 0; margin: 0;">
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> The past week saw escalating geopolitical conflicts, particularly the "Iran war," and significant shifts in trade policies.
-                                        </li>
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Global economic growth is projected to slow, with inflation a persistent concern.
-                                        </li>
-                                        <li style="margin-bottom: 0; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Tech layoffs continued, and a "super El Niño" is intensifying.
-                                        </li>
-                                    </ul>
-                                </div>
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="margin-bottom: 15px;">
+                                <tr>
+                                    <td class="category-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px 20px;">
+                                        <span class="category-title" style="font-size: 18px; color: #0f172a; margin-bottom: 8px; display: block; font-weight: bold;">History (India):</span>
+                                        <span class="category-items" style="font-size: 15px; color: #334155;">No significant event found for today.</span>
+                                    </td>
+                                </tr>
+                            </table>
 
-                                <!-- Month Review -->
-                                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 25px; padding: 25px;">
-                                    <h3 style="color: #064e3b; margin-top: 0; margin-bottom: 15px; font-size: 22px; font-weight: 600;">Month Review</h3>
-                                    <p style="margin: 0; padding: 0; line-height: 1.6; font-size: 15px; color: #333333;">August 2026 has been defined by ongoing geopolitical conflicts (Iran war, Ukraine), economic slowdown with persistent inflation, a booming but job-disrupting AI sector, and intensifying climate and health crises globally.</p>
-                                </div>
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="margin-bottom: 15px;">
+                                <tr>
+                                    <td class="category-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px 20px;">
+                                        <span class="category-title" style="font-size: 18px; color: #0f172a; margin-bottom: 8px; display: block; font-weight: bold;">Week Review:</span>
+                                        <span class="category-items" style="font-size: 15px; color: #334155;">Major global focus on US-Iran tensions, Ukraine attacks, Evergrande, and European wildfires.</span>
+                                    </td>
+                                </tr>
+                            </table>
 
-                                <!-- Gold -->
-                                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 25px; padding: 25px;">
-                                    <h3 style="color: #064e3b; margin-top: 0; margin-bottom: 15px; font-size: 22px; font-weight: 600;">Gold</h3>
-                                    <p style="margin: 0; padding: 0; line-height: 1.6; font-size: 15px; color: #333333;">24 Carat gold is ₹1,54,970 per 10g (-₹920 from yesterday), and 22 Carat gold is ₹1,42,050 per 10g (-₹850 from yesterday).</p>
-                                </div>
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="margin-bottom: 15px;">
+                                <tr>
+                                    <td class="category-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px 20px;">
+                                        <span class="category-title" style="font-size: 18px; color: #0f172a; margin-bottom: 8px; display: block; font-weight: bold;">Month Review:</span>
+                                        <span class="category-items" style="font-size: 15px; color: #334155;">August marked by US-Iran escalation, Evergrande sentencing, Russia-Ukraine war, and climate impacts in Europe and Asia.</span>
+                                    </td>
+                                </tr>
+                            </table>
 
-                                <!-- Indicators -->
-                                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 25px; padding: 25px;">
-                                    <h3 style="color: #064e3b; margin-top: 0; margin-bottom: 15px; font-size: 22px; font-weight: 600;">Indicators</h3>
-                                    <ul style="list-style-type: none; padding: 0; margin: 0;">
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Brent crude at $91.62/bbl, WTI at $85.83/bbl.
-                                        </li>
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> US Dollar Index around 98.86-99.6 (down).
-                                        </li>
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Major currencies show mixed signals.
-                                        </li>
-                                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Global equities are mixed.
-                                        </li>
-                                        <li style="margin-bottom: 0; padding-left: 20px; position: relative; line-height: 1.6; font-size: 15px; color: #333333;">
-                                            <span style="position: absolute; left: 0; top: 5px; color: #0f766e; font-size: 18px;">•</span> Inflation shows some decline but remains a concern.
-                                        </li>
-                                    </ul>
-                                </div>
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="margin-bottom: 15px;">
+                                <tr>
+                                    <td class="category-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px 20px;">
+                                        <span class="category-title" style="font-size: 18px; color: #0f172a; margin-bottom: 8px; display: block; font-weight: bold;">Gold:</span>
+                                        <span class="category-items" style="font-size: 15px; color: #334155;">Hyderabad 24 Carat gold at &#8377;1,59,270 (+&#8377;4,300), 22 Carat at &#8377;1,46,000 (+&#8377;3,950).</span>
+                                    </td>
+                                </tr>
+                            </table>
 
-                                <!-- Insight -->
-                                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 0; padding: 25px;">
-                                    <h3 style="color: #064e3b; margin-top: 0; margin-bottom: 15px; font-size: 22px; font-weight: 600;">Insight</h3>
-                                    <p style="margin: 0; padding: 0; line-height: 1.6; font-size: 15px; color: #333333;">The rapid global competition in reusable rocket technology, driven by private companies like LandSpace and SpaceX, represents a critical underreported trend. It is poised to drastically reduce space launch costs and increase frequency, potentially transforming national security and access to space for leading nations.</p>
-                                </div>
-                            </td>
-                        </tr>
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="margin-bottom: 15px;">
+                                <tr>
+                                    <td class="category-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px 20px;">
+                                        <span class="category-title" style="font-size: 18px; color: #0f172a; margin-bottom: 8px; display: block; font-weight: bold;">Indicators:</span>
+                                        <span class="category-items" style="font-size: 15px; color: #334155;">Brent crude at $94.11, WTI at $86.38, DXY at 98.558 (down), equities mixed, inflation concerns rising.</span>
+                                    </td>
+                                </tr>
+                            </table>
 
-                        <!-- Button Section -->
-                        <tr>
-                            <td align="center" style="padding: 10px 40px 40px;">
-                                <!--[if mso]>
-                                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://github.com/ravikiranoffl/TGCA/blob/main/2026/2026-08-20.md" style="height:50px;v-text-anchor:middle;width:280px;" arcsize="50%" strokecolor="#0f766e" fillcolor="#0f766e">
-                                    <w:anchorlock/>
-                                    <center style="color:#ffffff;font-family:sans-serif;font-size:18px;font-weight:bold;">View Detailed Global Report</center>
-                                </v:roundrect>
-                                <![endif]-->
-                                <a href="https://github.com/ravikiranoffl/TGCA/blob/main/2026/2026-08-20.md" target="_blank" style="background-color: #0f766e; border-radius: 50px; color: #ffffff; display: inline-block; font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 600; line-height: 1.2; padding: 15px 30px; text-align: center; text-decoration: none; -webkit-text-size-adjust: none; mso-hide: all; box-shadow: 0 4px 10px rgba(0, 118, 110, 0.3);">View Detailed Global Report</a>
-                            </td>
-                        </tr>
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="margin-bottom: 0;"> <!-- Last one, no margin-bottom -->
+                                <tr>
+                                    <td class="category-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px 20px;">
+                                        <span class="category-title" style="font-size: 18px; color: #0f172a; margin-bottom: 8px; display: block; font-weight: bold;">Insight:</span>
+                                        <span class="category-items" style="font-size: 15px; color: #334155;">Japan's development of submarine-launched hypersonic missiles represents an underreported but significant long-term shift in Indo-Pacific deterrence capabilities.</span>
+                                    </td>
+                                </tr>
+                            </table>
 
-                        <!-- Footer -->
-                        <tr>
-                            <td align="center" style="padding: 20px 40px; font-size: 12px; color: #777777;">
-                                <p style="margin: 0;">Delivered by THE GEMINI CHRONICLE AGENT</p>
-                                <p style="margin: 5px 0 0;">&copy; 2026 All rights reserved.</p>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
-    </center>
+                            <!-- Button Section -->
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="margin-top: 30px;">
+                                <tr>
+                                    <td align="center" style="padding: 0;">
+                                        <!--[if mso]>
+                                        <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://github.com/ravikiranoffl/TGCA/blob/main/2026/2026-08-20.md" style="height:50px;v-text-anchor:middle;width:250px;" arcsize="15%" strokecolor="#075985" fillcolor="#075985">
+                                        <w:anchorlock/>
+                                        <center style="color:#ffffff;font-family:sans-serif;font-size:16px;font-weight:bold;">View Detailed Global Report</center>
+                                        </v:roundrect>
+                                        <![endif]-->
+                                        <a href="https://github.com/ravikiranoffl/TGCA/blob/main/2026/2026-08-20.md" class="button"
+                                           style="background-color: #075985; border-radius: 8px; color: #ffffff; display: inline-block; font-family: 'Inter', sans-serif; font-size: 16px; font-weight: bold; line-height: 1; padding: 15px 30px; text-align: center; text-decoration: none; mso-padding-alt: 0; ">
+                                            <span style="mso-text-raise:15px;">View Detailed Global Report</span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
 </body>
 </html>
