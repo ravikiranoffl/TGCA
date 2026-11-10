@@ -6,9 +6,9 @@
 ![Gemini API](https://img.shields.io/badge/Google_Gemini-Powered-FFD42B.svg)
 ![Data](https://img.shields.io/badge/Data-Markdown-lightgrey.svg)
 
-> A fully autonomous, serverless intelligence pipeline that researches, writes, and permanently archives a daily global news briefing using Google's Gemini API and GitHub Actions.
+> A source-first daily news collector and intelligence archive. TGCA gathers regional and topic-level headlines, deduplicates them, uses Gemini with Google Search grounding for synthesis when available, and preserves a publisher-linked source ledger.
 
-Runs daily via GitHub Actions **->** Queries Gemini **->** Generates Markdown **->** Commits to Repo **->** Sends HTML Email.
+Runs daily via GitHub Actions **->** RSS collection **->** Gemini grounded synthesis (when available) **->** Markdown + source ledger **->** local HTML email **->** Git commit **->** email delivery.
 
 ---
 
@@ -77,7 +77,7 @@ A scheduled YAML workflow acts as a cron job, spinning up a fresh Linux environm
 ### 2. The Brain (Gemini API)
 A custom Python script that:
 *   Authenticates securely using environment secrets.
-*   Uses a dual-key failover (`GEMINI_API_KEY`, `GEMINI_API_KEY_2`) for enterprise reliability.
+*   Uses bounded key/model fallback and stops retrying hard project-quota failures. Keys from the same Google Cloud project share project quota.
 *   Performs live web-informed queries.
 *   Generates a structured global intelligence report.
 
@@ -87,7 +87,7 @@ A custom Python script that:
 *   Maintains a clean chronological dataset with zero database overhead.
 
 ### 4. The Designer (HTML Generation)
-The Markdown report is passed back to Gemini with strict UI instructions to generate a responsive, dynamically themed HTML newsletter for the **GNPS (Global News Premium Subscribers)** extension.
+The Markdown report is rendered into a responsive HTML newsletter locally. This avoids a third Gemini request and lets the email still be produced during Gemini quota outages.
 
 ---
 
@@ -152,3 +152,16 @@ Instead of consuming information reactively, this pipeline curates, stores, and 
 
 ---
 *Built with Python, GitHub Actions, and Google Gemini.*
+
+
+---
+
+## News collection and quota resilience
+
+TGCA now collects multiple regional and topic-level Google News RSS feeds (Americas, Europe, Asia-Pacific, Africa, Gulf/MENA, India, Telangana, Andhra Pradesh, technology, science, health, security, energy, markets, infrastructure and migration). Headlines are deduplicated while retaining publisher links and publication timestamps. A source ledger is appended to each Markdown report so the collected evidence remains auditable.
+
+Gemini is asked to find additional important stories, attribute factual claims to publishers, cross-check consequential developments and avoid generic filler. A structural check rejects reports with missing or thin sections and insufficient clickable citations.
+
+When Gemini returns a hard `429 RESOURCE_EXHAUSTED` quota/billing error, TGCA does not wait through repeated long retries. It writes a clearly labelled RSS-only archive instead of inventing missing news. If both Gemini and RSS collection fail, the workflow stops rather than publishing an empty report.
+
+**Coverage note:** RSS and Search grounding improve discovery but cannot establish 99% coverage of all news published worldwide. The source ledger documents what TGCA collected; it is not a complete census. Gemini quotas are project-scoped, so two API keys from the same Google Cloud project share its quota.
