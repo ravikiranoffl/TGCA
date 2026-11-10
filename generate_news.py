@@ -43,10 +43,10 @@ QUERIES = {
     "16 MENA Strategy and Technology": ["Gulf MENA Saudi UAE Qatar Oman Bahrain Kuwait AI technology investment news"],
     "17 Public Sentiment and Social Trends": ["major public protests strikes social movements public policy debate news"],
     "18 Major Breaking Developments": ["latest major breaking international news disasters investigations"],
-    "19 This Day in History Global": ["November {day} on this day world history important events"],
-    "20 This Day in History India": ["November {day} on this day Indian history important events"],
+    "19 This Day in History Global": ["{month} {day} on this day world history important events"],
+    "20 This Day in History India": ["{month} {day} on this day Indian history important events"],
     "21 This Week in Review": ["major world India news events this week last 7 days"],
-    "22 This Month in Review": ["major global India news developments November {year} this month"],
+    "22 This Month in Review": ["major global India news developments {month} {year} this month"],
     "24 Global Indicators": ["Brent crude US dollar index stock markets yields inflation latest"],
     "25 Underreported Developments": ["underreported important global news investigations public interest"],
 }
@@ -178,7 +178,7 @@ def _normalize(text):
 
 
 def _fetch_feed(section, query, now):
-    query = query.format(day=now.day, year=now.year) + " when:2d"
+    query = query.format(day=now.day, month=now.strftime("%B"), year=now.year) + " when:2d"
     url = RSS.format(quote_plus(query))
     response = requests.get(url, headers={"User-Agent": UA}, timeout=(8, 18))
     response.raise_for_status()
