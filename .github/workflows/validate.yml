@@ -1,0 +1,33 @@
+name: Validate TGCA
+
+on:
+  push:
+    branches:
+      - fix/news-coverage-and-quota-resilience
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "generate_news.py"
+      - ".github/workflows/**"
+
+permissions:
+  contents: read
+
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile-check generator
+        run: python -m py_compile generate_news.py
+
+      - name: Check patch whitespace
+        run: git diff --check
