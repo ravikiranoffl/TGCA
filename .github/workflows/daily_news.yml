@@ -35,6 +35,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install --upgrade google-genai beautifulsoup4 requests
 
+      - name: Validate Python syntax
+        run: python -m py_compile generate_news.py
+
       - name: Run News Generator Script
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
